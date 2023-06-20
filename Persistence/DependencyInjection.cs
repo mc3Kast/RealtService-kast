@@ -12,12 +12,10 @@ namespace RealtService.Persistence
             var connectionString = configuration["DbConnection"];
             services.AddDbContext<RealtServiceDbContext>(options =>
             {
-                options.UseSqlite(connectionString);
+                //options.UseSqlServer(connectionString);
             });
             services.AddScoped<IOfferDbContext>(provider =>
-            
-                provider.GetService<RealtServiceDbContext>()
-            );
+                provider.GetService<RealtServiceDbContext>());
             return services;
         }
     }
