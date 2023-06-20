@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealtService.Application.Offers.Queries.GetOfferList
 {
-    public class GetOfferListQuery : IRequest<OfferDetailsVm>
+    public class GetOfferListQuery : IRequest<OfferListVm>
     {
         public Guid UserId { get; set; }
     }

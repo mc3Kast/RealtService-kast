@@ -6,7 +6,7 @@ using RealtService.Domain.Entities;
 
 namespace RealtService.Application.Offers.Commands.UpdateOffer
 {
-    public class UpdateOfferCommandHandler : IRequestHandler<UpdateOfferCommand>
+    public class UpdateOfferCommandHandler : IRequestHandler<UpdateOfferCommand, Unit>
     {
         private readonly IOfferDbContext _dbContext;
 

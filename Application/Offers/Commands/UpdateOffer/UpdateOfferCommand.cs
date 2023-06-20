@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RealtService.Application.Offers.Commands.UpdateOffer
 {
-    public class UpdateOfferCommand : IRequest
+    public class UpdateOfferCommand : IRequest<Unit>
     {
         public Guid UserId { get; set; }
         public Guid Id { get; set; }

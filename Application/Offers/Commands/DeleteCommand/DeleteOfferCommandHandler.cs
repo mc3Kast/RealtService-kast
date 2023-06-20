@@ -5,7 +5,7 @@ using RealtService.Domain.Entities;
 
 namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
-    public class DeleteOfferCommandHandler : IRequestHandler<DeleteOfferCommand>
+    public class DeleteOfferCommandHandler : IRequestHandler<DeleteOfferCommand, Unit>
     {
         private readonly IOfferDbContext _dbContext;
 
@@ -22,5 +22,6 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
             await _dbContext.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
+
     }
 }
