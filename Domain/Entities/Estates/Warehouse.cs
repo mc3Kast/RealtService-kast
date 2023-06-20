@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Domain.Entities;
+namespace RealtService.Domain.Entities.Estate;
 
-public class Class2
+public class Warehouse: CommercialEstate
 {
+
 }

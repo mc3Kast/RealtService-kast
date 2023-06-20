@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Persistence
+namespace RealtService.Domain.Entities.Users;
+
+public class Owner : User
 {
-    internal class Class1
-    {
-    }
 }

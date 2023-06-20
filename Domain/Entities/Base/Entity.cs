@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Domain.Entities;
+namespace RealtService.Domain.Entities.Base;
 
-public class Class1
+public abstract class Entity
 {
-
+    public int Id { get; set; }
 }
