@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Misc;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 internal class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
 {

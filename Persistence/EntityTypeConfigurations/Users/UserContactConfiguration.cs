@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Misc;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 internal class UserContactConfiguration : IEntityTypeConfiguration<UserContact>
 {

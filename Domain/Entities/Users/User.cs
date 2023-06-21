@@ -15,4 +15,5 @@ public abstract class User : NamedEntity
     public ICollection<UserRole> Roles { get; set; } = new HashSet<UserRole>();
     public UserStatus Status { get; set; }
     public ICollection<UserContact> Contacts { get; set; } = new List<UserContact>();
+    public ICollection<Offer> Offers { get; set; } = new List<Offer>();
 }

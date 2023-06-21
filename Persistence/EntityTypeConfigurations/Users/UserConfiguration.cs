@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Categories;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 internal class UserConfiguration : IEntityTypeConfiguration<User>
 {
@@ -18,18 +18,28 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(user => user.Id);
         builder.HasIndex(user => user.Id).IsUnique();
 
+        builder.UseTphMappingStrategy();
+
         builder.HasMany(user => user.Roles)
                .WithMany(role => role.Users);
 
         builder.HasOne(user => user.Status)
                .WithMany()
                .HasForeignKey("StatusId")
-               .OnDelete(DeleteBehavior.NoAction)
+               .OnDelete(DeleteBehavior.Cascade)
                .IsRequired();
 
         builder.HasMany(user => user.Contacts)
                .WithOne(contact => contact.User)
-               .HasForeignKey("UserId");
+               .HasForeignKey("UserId")
+               .OnDelete(DeleteBehavior.Cascade)
+               .IsRequired();
+        
+        builder.HasMany<Offer>(user => user.Offers)
+               .WithOne(offer => offer.User)
+               .HasForeignKey("UserId")
+               .OnDelete(DeleteBehavior.NoAction)
+               .IsRequired(false);
 
         builder.Property<int>(nameof(User.Id))
                .IsRequired()

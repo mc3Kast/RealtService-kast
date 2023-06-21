@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Misc;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 internal class UserStatusConfiguration : IEntityTypeConfiguration<UserStatus>
 {

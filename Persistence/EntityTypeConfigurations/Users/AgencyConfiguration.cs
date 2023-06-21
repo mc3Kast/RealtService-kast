@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Categories;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 public class AgencyConfiguration : IEntityTypeConfiguration<Agency>
 {

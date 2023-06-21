@@ -1,4 +1,4 @@
-﻿using RealtService.Domain.Entities.Estate;
+﻿using RealtService.Domain.Entities.Estates;
 using RealtService.Domain.Entities.Terms;
 
 namespace RealtService.Domain.Entities.Offers;

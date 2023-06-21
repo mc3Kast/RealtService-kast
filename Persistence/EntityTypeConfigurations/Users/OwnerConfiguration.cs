@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Persistence.EntityTypeConfigurations.Users.Categories;
+namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
 public class OwnerConfiguration : IEntityTypeConfiguration<Owner>
 {
