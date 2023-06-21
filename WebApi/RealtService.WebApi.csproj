@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\RealtService.Application.csproj" />
+    <ProjectReference Include="..\Application\RealtService.Application.csproj" />    
+    <ProjectReference Include="..\Identity\RealtService.Identity.csproj" />
     <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />
   </ItemGroup>
 
