@@ -17,8 +17,8 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
             profile.CreateMap<Offer, OfferDetailsVm>()
                 .ForMember(offerVm => offerVm.Title,
                     opt => opt.MapFrom(offer => offer.Title))
-                .ForMember(offerVm => offerVm.Description,
-                    opt => opt.MapFrom(offer => offer.Description))
+            //    .ForMember(offerVm => offerVm.Description,
+              //      opt => opt.MapFrom(offer => offer.Description))
                 .ForMember(offerVm => offerVm.Id,
                     opt => opt.MapFrom(offer => offer.Id))
                 .ForMember(offerVm => offerVm.PublicationTime,

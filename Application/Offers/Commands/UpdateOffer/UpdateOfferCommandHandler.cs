@@ -21,7 +21,7 @@ namespace RealtService.Application.Offers.Commands.UpdateOffer
                 throw new NotFoundException(nameof(Offer), request.Id);
             }
 
-            entity.Description = request.Description;
+           // entity.Description = request.Description;
             entity.Title = request.Title;
             entity.Address = request.Address;
             entity.EditTime = DateTime.Now;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using RealtService.Application.Interfaces;
-using RealtService.Domain.Entities;
+using RealtService.Domain.Entities.Offers;
 
 namespace RealtService.Application.Offers.Commands.CreateOffer
 {
@@ -9,9 +9,9 @@ namespace RealtService.Application.Offers.Commands.CreateOffer
         private readonly IOfferDbContext _dbContext;
         public async Task<Guid> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
         {
-            var offer = new Offer
+            var offer = new CommercialOffer
             {
-                UserId = request.UserId,
+              /*  UserId = request.UserId,
                 Title = request.Title,
                 Description = request.Description,
                 Address = request.Address,
@@ -20,7 +20,7 @@ namespace RealtService.Application.Offers.Commands.CreateOffer
                 OfferTypeId = request.OfferTypeId,
                 Id = Guid.NewGuid(),
                 PublicationTime = DateTime.Now,
-                EditTime = null
+                EditTime = null*/
             };
 
             await _dbContext.Offers.AddAsync(offer, cancellationToken);

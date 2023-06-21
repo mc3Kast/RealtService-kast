@@ -12,7 +12,14 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddPersistanceServices(this IServiceCollection services, IConfiguration configuration)
     {
-
-        return null;
+        /*var connectionString = configuration["DbConnection"];
+        services.AddDbContext<RealtServiceDbContext>(options =>
+        {
+            //options.UseSqlServer(connectionString);
+        });
+        services.AddScoped<IOfferDbContext>(provider =>
+            provider.GetService<RealtServiceDbContext>());
+        return services;*/
+        return services;
     }
 }

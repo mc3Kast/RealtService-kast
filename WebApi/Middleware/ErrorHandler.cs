@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Text.Json;
 using System.Net.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealtService.WebApi.Middleware;
 
-public class ErrorHandler
+public class GlobalErrorHandler
 {
     private readonly RequestDelegate _next;
 
@@ -33,32 +34,10 @@ public class ErrorHandler
                 case ValidationException:
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
                     break;
-                case DbEntityNotFoundException:
-                    response.StatusCode = (int)HttpStatusCode.NotFound;
-                    break;
-                case InvalidUserLoginError:
-                    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    break;
-                case UserLoginIsNotFound:
-                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    break;
-                case CreateIdentityUserException:
-                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    break;
-                case WrongUserPasswordError:
-                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    break;
-                case InvalidJwtException:
-                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    break;
-                case BlockedPerson:
-                    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    break;
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }
-
             var result = JsonSerializer.Serialize(new { message = error.Message });
             await response.WriteAsync(result);
         }
