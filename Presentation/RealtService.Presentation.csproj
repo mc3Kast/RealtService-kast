@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application\RealtService.Application.csproj" />
+    <ProjectReference Include="..\Domain\RealtService.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
