@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.Commands.CreateOffer;
 using RealtService.Application.Offers.Commands.DeleteCommand;
 using RealtService.Application.Offers.Commands.UpdateOffer;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.Queries.GetOfferList;
-using RealtService.WebApi.Models;
+using RealtService.Presentation.Models;
 
-namespace RealtService.WebApi.Controllers
+namespace RealtService.Presentation.Controllers
 {
     [Route("api/[controller]")]
     public class OfferContoller : BaseController

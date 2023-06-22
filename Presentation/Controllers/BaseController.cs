@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
 
-namespace RealtService.WebApi.Controllers
-{
+namespace RealtService.Presentation.Controllers
+{ 
     [ApiController]
     [Route("api/[controller]/[action]")]
     public abstract class BaseController : ControllerBase
