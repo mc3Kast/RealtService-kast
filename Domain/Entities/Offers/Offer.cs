@@ -3,7 +3,7 @@ using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Domain.Entities;
 
-public abstract class Offer : Entity
+public abstract class Offer : NamedEntity
 {
     public string? Description { get; set; }
     public DateTime PublicationDate { get; set; }

@@ -27,6 +27,10 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
             .OnDelete(DeleteBehavior.NoAction)
             .IsRequired(false);
 
+        builder.Property<string>(nameof(Offer.Name))
+            .HasMaxLength(255)
+            .IsRequired();
+
         builder.Property<int>(nameof(Offer.Id))
             .IsRequired()
             .ValueGeneratedOnAdd()
