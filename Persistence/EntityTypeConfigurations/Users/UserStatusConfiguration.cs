@@ -22,10 +22,6 @@ internal class UserStatusConfiguration : IEntityTypeConfiguration<UserStatus>
             .IsRequired()
             .HasMaxLength(255);
 
-        builder.HasData(new UserStatus[]
-        {
-            new UserStatus() { Id = 1, Name = "Online" },
-            new UserStatus() { Id = 2, Name = "Offline" }
-        });
+        builder.HasData(UserStatus.ONLINE, UserStatus.OFFLINE);
     }
 }

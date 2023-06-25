@@ -15,8 +15,8 @@ internal class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
 {
     public void Configure(EntityTypeBuilder<UserRole> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.HasIndex(x => x.Id).IsUnique();
+        builder.HasKey(userRole => userRole.Id);
+        builder.HasIndex(userRole => userRole.Id).IsUnique();
 
         builder.Property<int>(nameof(UserRole.Id))
             .IsRequired()
@@ -28,11 +28,6 @@ internal class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
             .IsRequired()
             .HasMaxLength(255);
 
-        builder.HasData(new UserRole[]
-        {
-            new UserRole() { Id = 1, Name = "User" },
-            new UserRole() { Id = 2, Name = "Admin" }
-        });
-
+        builder.HasData(UserRole.USER, UserRole.ADMIN);
     }
 }
