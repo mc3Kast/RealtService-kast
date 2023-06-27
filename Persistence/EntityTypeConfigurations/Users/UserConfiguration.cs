@@ -61,5 +61,9 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property<DateTime>(nameof(User.RegistrationDate))
                .IsRequired();
+
+        builder.Navigation(user => user.Offers).AutoInclude();
+        builder.Navigation(user => user.Status).AutoInclude();
+        builder.Navigation(user => user.Roles).AutoInclude();
     }
 }

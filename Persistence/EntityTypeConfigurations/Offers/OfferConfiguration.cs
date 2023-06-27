@@ -42,5 +42,7 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
 
         builder.Property<string?>(nameof(Offer.Description))
             .IsRequired(false);
+
+        builder.Navigation(offer => offer.User).AutoInclude();
     }
 }

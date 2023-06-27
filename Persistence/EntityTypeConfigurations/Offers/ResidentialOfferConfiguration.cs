@@ -29,5 +29,8 @@ public class ResidentialOfferConfiguration : IEntityTypeConfiguration<Residentia
             .HasForeignKey<ResidentialTerm>("TermId")
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
+
+        builder.Navigation(offer => offer.Estate).AutoInclude();
+        builder.Navigation(offer => offer.Term).AutoInclude();
     }
 }

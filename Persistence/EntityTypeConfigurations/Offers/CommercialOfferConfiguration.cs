@@ -30,5 +30,7 @@ public class CommercialOfferConfiguration : IEntityTypeConfiguration<CommercialO
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
+        builder.Navigation(offer => offer.Estate).AutoInclude();
+        builder.Navigation(offer => offer.Term).AutoInclude();
     }
 }

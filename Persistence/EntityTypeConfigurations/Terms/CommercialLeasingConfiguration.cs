@@ -27,5 +27,7 @@ public class CommercialLeasingConfiguration : IEntityTypeConfiguration<Commercia
             .HasColumnType("money")
             .HasDefaultValue(null)
             .IsRequired(false);
+
+        builder.Navigation(leasing => leasing.Requirements).AutoInclude();
     }
 }

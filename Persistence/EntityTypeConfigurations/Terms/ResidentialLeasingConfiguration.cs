@@ -26,5 +26,7 @@ public class ResidentialLeasingConfiguration : IEntityTypeConfiguration<Resident
             .HasColumnType("money")
             .HasDefaultValue(null)
             .IsRequired(false);
+
+        builder.Navigation(leasing => leasing.Requirements).AutoInclude();
     }
 }
