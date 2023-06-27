@@ -34,7 +34,7 @@ public class RealtServiceDBContext: DbContext
     public DbSet<ResidentialLeasing> ResidentialLeasings { get; set; }
     public DbSet<ResidentialLeasingRequirement> ResidentialLeasingRequirements { get; set; }
 
-    public RealtServiceDBContext(DbContextOptions options) : base(options)
+    public RealtServiceDBContext(DbContextOptions options) : base(options) 
     {
        // Database.EnsureDeleted();
         Database.EnsureCreated();
