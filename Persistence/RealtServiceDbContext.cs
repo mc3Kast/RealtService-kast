@@ -13,7 +13,7 @@ using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Persistence;
 
-public class RealtServiceDBContext : DbContext
+public class RealtServiceDBContext: DbContext
 {
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Agency> Agencies { get; set; }
