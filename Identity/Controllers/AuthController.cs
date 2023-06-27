@@ -31,7 +31,9 @@ namespace RealtService.Identity.Controllers
         {
             var viewModel = new LoginViewModel
             {
-                ReturnUrl = returnUrl
+                ReturnUrl = returnUrl,
+                Email = returnUrl,
+                Password = returnUrl
             };
             return View(viewModel);
         }
@@ -80,10 +82,10 @@ namespace RealtService.Identity.Controllers
                 return View(viewModel);
             }
 
-           var user = new User//User is abstract
+           var user = new Owner
             {
                 Email = viewModel.Email,
-                HashPassword = viewModel.Password//use some hash func
+                HashPassword = viewModel.Password
             };
 
             var result = await _userManager.CreateAsync(user, viewModel.Password);            

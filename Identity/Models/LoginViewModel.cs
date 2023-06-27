@@ -9,11 +9,9 @@ namespace RealtService.Identity.Models
 {
     public class LoginViewModel
     {
-        [Required]
-        public string Email { get; set; }
-        [Required]
+        public required string Email { get; set; }
         [DataType(DataType.Password)]
-        public string Password { get; set; }
-        public string ReturnUrl { get; set; }
+        public required string Password { get; set; }
+        public required string ReturnUrl { get; set; }
     }
 }

@@ -7,12 +7,18 @@ namespace RealtService.Identity
 {
     public static class Configuration
     {
+        /// <summary>
+        /// List of services that alloed to use identity server
+        /// </summary>
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
                 new ApiScope("RealServiceWebAPI", "Web API")
             };
 
+        /// <summary>
+        /// Scope for client to see user claims, id or profile
+        /// </summary>
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
             {
@@ -20,16 +26,21 @@ namespace RealtService.Identity
                 new IdentityResources.Profile()
             };
 
+        /// <summary>
+        ///  
+        /// </summary>
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>
             {
-                new ApiResource("RealServiceWebAPI", "Web API", new []
-                    { JwtClaimTypes.Name})
+                new ApiResource("RealServiceWebAPI", "Web API", new string[] { JwtClaimTypes.Name} )
                 {
                     Scopes = {"RealServiceWebAPI"}
                 }
             };
 
+        /// <summary>
+        /// Clients that allowed to use identity server
+        /// </summary>
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {
