@@ -13,7 +13,7 @@ using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Persistence;
 
-public class RealtServiceDbContext: DbContext
+public class RealtServiceDBContext: DbContext
 {
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Agency> Agencies { get; set; }
@@ -34,7 +34,7 @@ public class RealtServiceDbContext: DbContext
     public DbSet<ResidentialLeasing> ResidentialLeasings { get; set; }
     public DbSet<ResidentialLeasingRequirement> ResidentialLeasingRequirements { get; set; }
 
-    public RealtServiceDbContext(DbContextOptions options) : base(options) 
+    public RealtServiceDBContext(DbContextOptions options) : base(options) 
     {
        // Database.EnsureDeleted();
         Database.EnsureCreated();
