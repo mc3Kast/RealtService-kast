@@ -23,12 +23,12 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
         public async Task<OfferListVm> Handle(GetOfferListQuery request, CancellationToken cancellationToken)
         {
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
-            var offerQuery = await offerRepository
+            IQueryable<Offer> offerQuery = await offerRepository
                 //.Where(offer => offer.UserId == request.UserId)
                 //.ProjectTo<OfferLookupDto>(_mapper.ConfigurationProvider)
                 .GetAllAsync();
-
-            return new OfferListVm { Offers =  offerQuery };
+            
+            return new OfferListVm { Offers =  offerQuery.ToList() };
         }
     }
 }

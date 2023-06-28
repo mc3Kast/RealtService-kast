@@ -20,18 +20,16 @@ namespace RealtService.WebApi.Controllers
         {
             var query = new GetOfferListQuery
             {
-                UserId = UserId
             };
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OfferDetailsVm>> Get(Guid id)
+        public async Task<ActionResult<OfferDetailsVm>> Get(int id)
         {
             var query = new GetOfferDetailsQuery
             {
-                UserId = UserId
             };
             var vm = await Mediator.Send(query);
             return Ok(vm);
@@ -41,7 +39,6 @@ namespace RealtService.WebApi.Controllers
         public async Task<ActionResult<Guid>> Create([FromBody] CreateOfferDto createOfferDto)
         {
             var command = _mapper.Map<CreateOfferCommand>(createOfferDto);
-            command.UserId = UserId;
             var offerId = await Mediator.Send(command);
             return Ok(offerId);
         }
@@ -50,18 +47,16 @@ namespace RealtService.WebApi.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateOfferDto updateOfferDto)
         {
             var command = _mapper.Map<UpdateOfferCommand>(updateOfferDto);
-            command.UserId = UserId;
             await Mediator.Send(command);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
             var command = new DeleteOfferCommand
             {
-                Id = id,
-                UserId = UserId
+                Id = id
             };
             await Mediator.Send(command);
             return NoContent();

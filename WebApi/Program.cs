@@ -22,9 +22,9 @@ public class Program
         string connectionString = config.GetConnectionString("DefaultConnection")!;
 
         DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
-        DbContextOptions dbOptions = optionsBuilder
-                        .UseSqlServer(connectionString)
-                        .Options;
+        //DbContextOptions dbOptions = optionsBuilder
+        //                .UseSqlServer(connectionString)
+        //                .Options;
 
 
         var builder = WebApplication.CreateBuilder(args);
@@ -44,21 +44,21 @@ public class Program
             });
         });
         var app = builder.Build();
-        RealtServiceDBContext context = new(dbOptions);
-        UserRepository userRepository = new(context.Users);
-        OfferRepository offerRepository = new(context.Offers);
-        using IUnitOfWork uow = new UnitOfWork(context, offerRepository, userRepository);
-        CreateAgencyCommand cad = new(
-            Name: "123",
-            Email: "vnavsb",
-            HashPassword: "abcd",
-            AgencyUniqueNumber: 1234,
-            RegistrationDate: DateTime.Now,
-            UserStatus: UserStatus.OFFLINE,
-            UserRoles: new List<UserRole>() { UserRole.USER }
-        );
-        CreateAgencyCommandHandler cadCommandHandler = new(uow);
-        await cadCommandHandler.Handle(cad, new CancellationTokenSource().Token);
+        //RealtServiceDBContext context = new(dbOptions);
+        //UserRepository userRepository = new(context.Users);
+        //OfferRepository offerRepository = new(context.Offers);
+        //using IUnitOfWork uow = new UnitOfWork(context, offerRepository, userRepository);
+        //CreateAgencyCommand cad = new(
+        //    Name: "123",
+        //    Email: "vnavsb",
+        //    HashPassword: "abcd",
+        //    AgencyUniqueNumber: 1234,
+        //    RegistrationDate: DateTime.Now,
+        //    UserStatus: UserStatus.OFFLINE,
+        //    UserRoles: new List<UserRole>() { UserRole.USER }
+        //);
+        //CreateAgencyCommandHandler cadCommandHandler = new(uow);
+        //await cadCommandHandler.Handle(cad, new CancellationTokenSource().Token);
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors("AllowAll");

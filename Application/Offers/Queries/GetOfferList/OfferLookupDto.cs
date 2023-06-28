@@ -6,7 +6,7 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
 {
     public class OfferLookupDto : IMapWith<Offer>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public void Mapping (Profile profile)
         {
