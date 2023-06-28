@@ -1,4 +1,4 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using RealtService.Application.Common.Mappings;
 using RealtService.Application.Offers.Commands.UpdateOffer;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
@@ -25,4 +25,4 @@ namespace RealtService.Presentation.Models
                     opt => opt.MapFrom(offerDto => offerDto.Address));
         }
     }
-}*/
+}

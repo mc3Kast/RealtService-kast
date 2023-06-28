@@ -1,4 +1,4 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.Commands.CreateOffer;
 using RealtService.Application.Offers.Commands.DeleteCommand;
@@ -67,4 +67,3 @@ namespace RealtService.Presentation.Controllers
         }
     }
 }
-*/

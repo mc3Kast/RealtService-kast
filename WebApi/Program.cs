@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RealtService.Application.Common.Mappings;
 using RealtService.Application.UnitOfWork;
 using RealtService.Application.Users.Commands;
 using RealtService.Domain.Entities.Users;
@@ -6,6 +7,7 @@ using RealtService.Persistence;
 using RealtService.Persistence.UnitOfWork;
 using RealtService.Persistence.UnitOfWork.Repositories;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace RealtService.WebApi;
 
@@ -26,8 +28,22 @@ public class Program
 
 
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddAutoMapper(conf => {
+            conf.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+            // нужно вставить вашу аналогию моего IOfferDbContext
+            // conf.AddProfile(new AssemblyMappingProfile(typeof(IOfferDbContext).Assembly));
+        });
+        builder.Services.AddControllers();
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.AllowAnyOrigin();
+            });
+        });
         var app = builder.Build();
-
         RealtServiceDBContext context = new(dbOptions);
         UserRepository userRepository = new(context.Users);
         OfferRepository offerRepository = new(context.Offers);
@@ -43,6 +59,14 @@ public class Program
         );
         CreateAgencyCommandHandler cadCommandHandler = new(uow);
         await cadCommandHandler.Handle(cad, new CancellationTokenSource().Token);
+        app.UseRouting();
+        app.UseHttpsRedirection();
+        app.UseCors("AllowAll");
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+
         await app.RunAsync();
     }
 }
