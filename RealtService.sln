@@ -3,23 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{EF611E25-3DBF-4AB8-8323-C4013335F414}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{41D95068-10B2-4D9E-99F2-9C303DE61C86}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E8A18D6A-3778-40B2-986C-4E11551B794C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.Domain", "Domain\RealtService.Domain.csproj", "{0B431C99-797C-4F7D-B40A-F4FA28EFF9FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Domain", "Domain\RealtService.Domain.csproj", "{0B431C99-797C-4F7D-B40A-F4FA28EFF9FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.Application", "Application\RealtService.Application.csproj", "{70506FC2-0C37-4CA5-81C1-C742DB154A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Application", "Application\RealtService.Application.csproj", "{70506FC2-0C37-4CA5-81C1-C742DB154A7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.Persistence", "Persistence\RealtService.Persistence.csproj", "{2FD6EA7E-A6AC-40FE-90C1-45788E45B79E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Persistence", "Persistence\RealtService.Persistence.csproj", "{2FD6EA7E-A6AC-40FE-90C1-45788E45B79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.Identity", "Identity\RealtService.Identity.csproj", "{10CAD303-4E63-422E-8ACF-CB85F59027B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Identity", "Identity\RealtService.Identity.csproj", "{10CAD303-4E63-422E-8ACF-CB85F59027B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.WebApi", "WebApi\RealtService.WebApi.csproj", "{519FABFC-B932-40FC-BD83-5D9F4DC237BC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtService.Presentation", "Presentation\RealtService.Presentation.csproj", "{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.WebApi", "WebApi\RealtService.WebApi.csproj", "{519FABFC-B932-40FC-BD83-5D9F4DC237BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +43,6 @@ Global
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,7 +52,6 @@ Global
 		{70506FC2-0C37-4CA5-81C1-C742DB154A7B} = {E8A18D6A-3778-40B2-986C-4E11551B794C}
 		{2FD6EA7E-A6AC-40FE-90C1-45788E45B79E} = {41D95068-10B2-4D9E-99F2-9C303DE61C86}
 		{10CAD303-4E63-422E-8ACF-CB85F59027B0} = {41D95068-10B2-4D9E-99F2-9C303DE61C86}
-		{70958B41-E435-4CFB-AD5D-2E4D02CA4F0D} = {EF611E25-3DBF-4AB8-8323-C4013335F414}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B3A00F22-FB4E-41CD-8A13-1A7383DDFE91}

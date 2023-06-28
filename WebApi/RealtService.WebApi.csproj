@@ -18,8 +18,7 @@
     <ProjectReference Include="..\Application\RealtService.Application.csproj" />
     <ProjectReference Include="..\Domain\RealtService.Domain.csproj" />    
     <ProjectReference Include="..\Identity\RealtService.Identity.csproj" />    
-    <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />    
-    <ProjectReference Include="..\Presentation\RealtService.Presentation.csproj" />
+    <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
