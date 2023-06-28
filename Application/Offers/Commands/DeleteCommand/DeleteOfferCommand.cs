@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RealtService.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
     public class DeleteOfferCommand : IRequest<Unit>
     {
-        public Guid UserId { get; set; }
-        public Guid Id { get; set; }
+        public User UserId { get; set; }
+        public int Id { get; set; }
     }
 }

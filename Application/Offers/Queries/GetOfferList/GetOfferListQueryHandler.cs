@@ -4,8 +4,8 @@ using MediatR;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using RealtService.Application.Common.Exceptions;
-using RealtService.Application.Interfaces;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
+using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,15 +17,16 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
 {
     public class GetOfferListQueryHandler : IRequestHandler<GetOfferListQuery, OfferListVm>
     {
-        private readonly IOfferDbContext _dbContext;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public GetOfferListQueryHandler(IOfferDbContext dbContext, IMapper mapper) => (_dbContext, _mapper) = (dbContext, mapper);
+        public GetOfferListQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) => (_unitOfWork, _mapper) = (unitOfWork, mapper);
         public async Task<OfferListVm> Handle(GetOfferListQuery request, CancellationToken cancellationToken)
         {
-            var offerQuery = await _dbContext.Offers
-                .Where(offer => offer.UserId == request.UserId)
-                .ProjectTo<OfferLookupDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
+            var offerQuery = await offerRepository
+                //.Where(offer => offer.UserId == request.UserId)
+                //.ProjectTo<OfferLookupDto>(_mapper.ConfigurationProvider)
+                .GetAllAsync();
 
             return new OfferListVm { Offers =  offerQuery };
         }

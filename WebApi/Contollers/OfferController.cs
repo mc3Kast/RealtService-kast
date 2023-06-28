@@ -6,7 +6,7 @@ using RealtService.Application.Offers.Commands.UpdateOffer;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.Queries.GetOfferList;
 using RealtService.Domain.Entities.Users;
-using RealtService.Presentation.Models;
+using RealtService.WebApi.Models;
 
 namespace RealtService.WebApi.Controllers
 {

@@ -16,15 +16,15 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
         {
             profile.CreateMap<Offer, OfferDetailsVm>()
                 .ForMember(offerVm => offerVm.Title,
-                    opt => opt.MapFrom(offer => offer.Title))
-            //    .ForMember(offerVm => offerVm.Description,
-              //      opt => opt.MapFrom(offer => offer.Description))
+                    opt => opt.MapFrom(offer => offer.Name))
+                .ForMember(offerVm => offerVm.Description,
+                    opt => opt.MapFrom(offer => offer.Description))
                 .ForMember(offerVm => offerVm.Id,
                     opt => opt.MapFrom(offer => offer.Id))
                 .ForMember(offerVm => offerVm.PublicationTime,
-                    opt => opt.MapFrom(offer => offer.PublicationTime))
+                    opt => opt.MapFrom(offer => offer.PublicationDate))
                 .ForMember(offerVm => offerVm.EditTime,
-                    opt => opt.MapFrom(offer => offer.EditTime))
+                    opt => opt.MapFrom(offer => offer.EditDate))
                 .ForMember(offerVm => offerVm.Address,
                     opt => opt.MapFrom(offer => offer.Address));
         }

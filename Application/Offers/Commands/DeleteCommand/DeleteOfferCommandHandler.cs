@@ -1,25 +1,28 @@
 ﻿using MediatR;
 using RealtService.Application.Common.Exceptions;
-using RealtService.Application.Interfaces;
+using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
 namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
     public class DeleteOfferCommandHandler : IRequestHandler<DeleteOfferCommand, Unit>
     {
-        private readonly IOfferDbContext _dbContext;
-
-        public DeleteOfferCommandHandler(IOfferDbContext dbContext) => _dbContext = dbContext;
+        private readonly IUnitOfWork _unitOfWork;
+        public DeleteOfferCommandHandler(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         public async Task<Unit> Handle(DeleteOfferCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Offers.FindAsync(new object[] { request.Id }, cancellationToken);
-            if(entity == null || entity.UserId != request.UserId)
+            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
+            var entity = await offerRepository.FindAsync(new object[] { request.Id }, cancellationToken);
+            if(entity == null || entity.User != request.UserId)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }
 
-            _dbContext.Offers.Remove(entity);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            offerRepository.Delete(entity);
+            await _unitOfWork.SaveChangesAsync();
             return Unit.Value;
         }
 

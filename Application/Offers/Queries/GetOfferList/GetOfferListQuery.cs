@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
+using RealtService.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
 {
     public class GetOfferListQuery : IRequest<OfferListVm>
     {
-        public Guid UserId { get; set; }
+        public User UserId { get; set; }
     }
 }

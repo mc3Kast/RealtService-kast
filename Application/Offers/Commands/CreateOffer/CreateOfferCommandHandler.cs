@@ -1,34 +1,34 @@
 ﻿using MediatR;
+using RealtService.Application.UnitOfWork;
+using RealtService.Domain.Entities;
+using RealtService.Domain.Entities.Offers;
+using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Application.Offers.Commands.CreateOffer
 {
-    public class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, Guid>
+    public class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, ResidentialOffer>
     {
-        //    private readonly IOfferDbContext _dbContext;
-        //    public async Task<Guid> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
-        //    {
-        //        var offer = new OfferTest
-        //        {
-        //            UserId = request.UserId,
-        //            Title = request.Title,
-        //            Description = request.Description,
-        //            Address = request.Address,
-        //            CommercialOfferDatailsId = request.CommercialOfferDatailsId,
-        //            ResidentialOfferDatailsId = request.ResidentialOfferDatailsId,
-        //            OfferTypeId = request.OfferTypeId,
-        //            Id = Guid.NewGuid(),
-        //            PublicationTime = DateTime.Now,
-        //            EditTime = null
-        //        };
-
-        //        await _dbContext.Offers.AddAsync(offer, cancellationToken);
-        //        await _dbContext.SaveChangesAsync(cancellationToken);
-
-        //        return offer.Id;
-        //    }
-        public Task<Guid> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
+        private readonly IUnitOfWork _unitOfWork;
+        public CreateOfferCommandHandler(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+        }
+        public async Task<ResidentialOffer> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
+        {
+            var offer = new ResidentialOffer
+            {
+                User = request.User,
+                Name = request.Title,
+                Description = request.Description,
+                Address = request.Address,
+                PublicationDate = DateTime.Now,
+                EditDate = null
+            };
+
+            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
+            offer = (ResidentialOffer)offerRepository.Insert(offer);
+            await _unitOfWork.SaveChangesAsync();
+            return offer;
         }
     }
 }
