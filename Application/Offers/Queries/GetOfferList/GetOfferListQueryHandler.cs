@@ -24,8 +24,6 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
         {
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
             IQueryable<Offer> offerQuery = await offerRepository
-                //.Where(offer => offer.UserId == request.UserId)
-                //.ProjectTo<OfferLookupDto>(_mapper.ConfigurationProvider)
                 .GetAllAsync();
             
             return new OfferListVm { Offers =  offerQuery.ToList() };

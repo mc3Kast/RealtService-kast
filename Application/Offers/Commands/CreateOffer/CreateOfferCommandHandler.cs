@@ -17,7 +17,7 @@ namespace RealtService.Application.Offers.Commands.CreateOffer
         {
             var offer = new ResidentialOffer
             {
-                User = request.User,
+                //User = request.User,
                 Name = request.Title,
                 Description = request.Description,
                 Address = request.Address,
