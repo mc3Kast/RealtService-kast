@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.Commands.CreateOffer;
 using RealtService.Application.Offers.Commands.DeleteCommand;
@@ -11,10 +12,10 @@ using RealtService.WebApi.Models;
 namespace RealtService.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class OfferContoller : BaseController
+    public class OfferContoller : RealtServiceControllerBase
     {
-        private readonly IMapper _mapper;
-        public OfferContoller(IMapper mapper) => _mapper = mapper;
+        public OfferContoller(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
+        
         [HttpGet]
         public async Task<ActionResult<OfferListVm>> GetAll()
         {
@@ -38,7 +39,7 @@ namespace RealtService.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateOfferDto createOfferDto)
         {
-            var command = _mapper.Map<CreateOfferCommand>(createOfferDto);
+            var command = Mapper.Map<CreateOfferCommand>(createOfferDto);
             var offerId = await Mediator.Send(command);
             return Ok(offerId);
         }
@@ -46,7 +47,7 @@ namespace RealtService.WebApi.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateOfferDto updateOfferDto)
         {
-            var command = _mapper.Map<UpdateOfferCommand>(updateOfferDto);
+            var command = Mapper.Map<UpdateOfferCommand>(updateOfferDto);
             await Mediator.Send(command);
             return NoContent();
         }

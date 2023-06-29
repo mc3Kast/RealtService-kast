@@ -2,18 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using RealtService.Application.Users.Queries.GetUserList;
+using MediatR;
 
 namespace RealtService.WebApi.Contollers
 {
-    [Route("api/[controller]")]
-    public class UserController : BaseController
+    [Route("[api]/[controller]")]
+    public class UserController: RealtServiceControllerBase
     {
-        private readonly IMapper _mapper;
-        public UserController(IMapper mapper) => _mapper = mapper;
+        public UserController(IMediator mediator, IMapper mapper) : base(mediator, mapper) { }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await Mediator.Send(new GetUserListQuery { }));
+            return new JsonResult(await Mediator.Send(new GetUserListQuery { }));
         }
     }
 }

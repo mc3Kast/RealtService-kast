@@ -9,20 +9,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RealtService.WebApi.Middleware;
 
-public class GlobalErrorHandler
+public class GlobalErrorHandler: IMiddleware
 {
-    private readonly RequestDelegate _next;
-
-    public GlobalErrorHandler(RequestDelegate next)
-    {
-        _next = next;
-    }
-
-    public async Task Invoke(HttpContext context)
+    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
         {
-            await _next(context);
+            await next(context);
         }
         catch (Exception error)
         {
@@ -42,5 +35,4 @@ public class GlobalErrorHandler
             await response.WriteAsync(result);
         }
     }
-
 }
