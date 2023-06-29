@@ -36,7 +36,7 @@ public class RealtServiceDBContext : DbContext
 
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
-        //Database.EnsureDeleted();
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
