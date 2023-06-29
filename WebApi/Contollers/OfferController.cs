@@ -12,9 +12,9 @@ using RealtService.WebApi.Models;
 namespace RealtService.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class OfferContoller : RealtServiceControllerBase
+    public class OfferController : RealtServiceControllerBase
     {
-        public OfferContoller(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
+        public OfferController(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
         
         [HttpGet]
         public async Task<ActionResult<OfferListVm>> GetAll()
@@ -31,6 +31,7 @@ namespace RealtService.WebApi.Controllers
         {
             var query = new GetOfferDetailsQuery
             {
+                Id = id
             };
             var vm = await Mediator.Send(query);
             return Ok(vm);

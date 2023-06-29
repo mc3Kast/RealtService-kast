@@ -6,7 +6,7 @@ using MediatR;
 
 namespace RealtService.WebApi.Contollers
 {
-    [Route("[api]/[controller]")]
+    [Route("api/[controller]")]
     public class UserController: RealtServiceControllerBase
     {
         public UserController(IMediator mediator, IMapper mapper) : base(mediator, mapper) { }
