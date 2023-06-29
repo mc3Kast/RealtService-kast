@@ -16,10 +16,13 @@ public static class Program
         builder.Services
             .AddPersistanceServices(configuration)
             .AddApplicationServices()
-            .AddWebApiServices();
+            .AddWebApiServices()
+            .AddSwaggerGen();
 
         WebApplication app = builder.Build();
         //app.UseMiddleware<GlobalErrorHandler>();
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors("AllowAll");
