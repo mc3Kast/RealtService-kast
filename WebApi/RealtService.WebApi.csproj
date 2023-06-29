@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
   </ItemGroup>
 
@@ -16,8 +19,7 @@
     <ProjectReference Include="..\Application\RealtService.Application.csproj" />
     <ProjectReference Include="..\Domain\RealtService.Domain.csproj" />    
     <ProjectReference Include="..\Identity\RealtService.Identity.csproj" />    
-    <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />    
-    <ProjectReference Include="..\Presentation\RealtService.Presentation.csproj" />
+    <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

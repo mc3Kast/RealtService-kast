@@ -7,11 +7,13 @@ namespace RealtService.Persistence.UnitOfWork.Repositories;
 
 public class UserRepository : IRepository<User>
 {
+    private readonly RealtServiceDBContext _context;
     private readonly DbSet<User> _users;
 
-    public UserRepository(DbSet<User> users)
+    public UserRepository(RealtServiceDBContext context)
     {
-        _users = users;
+        _context = context;
+        _users = _context.Set<User>();
     }
 
     public void Delete(User entity)

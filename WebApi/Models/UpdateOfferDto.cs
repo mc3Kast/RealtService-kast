@@ -4,7 +4,7 @@ using RealtService.Application.Offers.Commands.UpdateOffer;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Presentation.Models
+namespace RealtService.WebApi.Models
 {
     public class UpdateOfferDto : IMapWith<UpdateOfferCommand>
     {

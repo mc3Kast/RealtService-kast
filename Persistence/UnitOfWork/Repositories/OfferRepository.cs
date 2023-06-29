@@ -12,11 +12,13 @@ namespace RealtService.Persistence.UnitOfWork.Repositories;
 
 public class OfferRepository : IRepository<Offer>
 {
+    private readonly RealtServiceDBContext _context;
     private readonly DbSet<Offer> _offers;
 
-    public OfferRepository(DbSet<Offer> offers)
+    public OfferRepository(RealtServiceDBContext context)
     {
-        _offers = offers;
+        _context = context;
+        _offers = context.Set<Offer>();
     }
 
     public void Delete(Offer entity)
