@@ -18,7 +18,7 @@ public class TermConfiguration : IEntityTypeConfiguration<Term>
         builder.HasKey(user => user.Id);
         builder.HasIndex(user => user.Id).IsUnique();
 
-        builder.UseTphMappingStrategy();
+        builder.UseTpcMappingStrategy();
 
         builder.Property<int>(nameof(User.Id))
            .IsRequired()

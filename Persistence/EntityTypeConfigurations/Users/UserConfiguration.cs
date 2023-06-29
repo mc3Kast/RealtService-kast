@@ -55,7 +55,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
                .IsRequired()
                .HasMaxLength(255);
 
-        builder.Property<string>(nameof(UserContact.Name))
+        builder.Property<string>(nameof(User.Name))
                .IsRequired()
                .HasMaxLength(255);
 
@@ -63,7 +63,5 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
                .IsRequired();
 
         builder.Navigation(user => user.Offers).AutoInclude();
-        //builder.Navigation(user => user.Status).AutoInclude();
-        //builder.Navigation(user => user.Roles).AutoInclude();
     }
 }

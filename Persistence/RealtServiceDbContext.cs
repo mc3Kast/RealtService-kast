@@ -36,6 +36,8 @@ public class RealtServiceDBContext : DbContext
 
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
+        UserStatuses.AttachRange(UserStatus.OFFLINE, UserStatus.ONLINE);
+        UserRoles.AttachRange(UserRole.USER, UserRole.ADMIN);
         Database.EnsureDeleted();
         Database.EnsureCreated();
     }
@@ -45,5 +47,4 @@ public class RealtServiceDBContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealtServiceDBContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
-
 }

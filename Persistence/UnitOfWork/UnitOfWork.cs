@@ -24,8 +24,6 @@ public class UnitOfWork : IUnitOfWork
         _dbContext = realtServiceDBContext;
         _repositories.Add(typeof(User), userRepository);
         _repositories.Add(typeof(Offer), offerRepository);
-        _dbContext.UserStatuses.AttachRange(UserStatus.OFFLINE, UserStatus.ONLINE);
-        _dbContext.UserRoles.AttachRange(UserRole.USER, UserRole.ADMIN);
     }
     
     public IRepository<TEntity>? GetRepository<TEntity>() where TEntity : class

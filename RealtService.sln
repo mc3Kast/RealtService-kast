@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Identity", "Id
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.WebApi", "WebApi\RealtService.WebApi.csproj", "{519FABFC-B932-40FC-BD83-5D9F4DC237BC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C9C4EDFB-9442-49B0-9A75-946A57B7119B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Tests\Application.Tests\Application.Tests.csproj", "{18E5FB73-9D4D-478D-91BD-EE45C9A07277}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{519FABFC-B932-40FC-BD83-5D9F4DC237BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18E5FB73-9D4D-478D-91BD-EE45C9A07277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18E5FB73-9D4D-478D-91BD-EE45C9A07277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18E5FB73-9D4D-478D-91BD-EE45C9A07277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18E5FB73-9D4D-478D-91BD-EE45C9A07277}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{70506FC2-0C37-4CA5-81C1-C742DB154A7B} = {E8A18D6A-3778-40B2-986C-4E11551B794C}
 		{2FD6EA7E-A6AC-40FE-90C1-45788E45B79E} = {41D95068-10B2-4D9E-99F2-9C303DE61C86}
 		{10CAD303-4E63-422E-8ACF-CB85F59027B0} = {41D95068-10B2-4D9E-99F2-9C303DE61C86}
+		{18E5FB73-9D4D-478D-91BD-EE45C9A07277} = {C9C4EDFB-9442-49B0-9A75-946A57B7119B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B3A00F22-FB4E-41CD-8A13-1A7383DDFE91}

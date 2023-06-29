@@ -16,8 +16,8 @@ namespace RealtService.Application.Offers.Commands.UpdateOffer
         public async Task<Unit> Handle(UpdateOfferCommand request, CancellationToken cancellationToken)
         {
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
-            var entity = await offerRepository.GetFirstOrDefaulAsync(offer => offer.Id == request.Id);
-
+            var entity = await offerRepository.FindAsync(request.Id);
+            Console.WriteLine(entity is null);
             if (entity == null || entity.User != request.UserId) 
             {
                 throw new NotFoundException(nameof(Offer), request.Id);

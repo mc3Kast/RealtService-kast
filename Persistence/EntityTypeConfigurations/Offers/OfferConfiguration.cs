@@ -19,7 +19,7 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
         builder.HasKey(offer => offer.Id);
         builder.HasIndex(offer => offer.Id).IsUnique();
 
-        builder.UseTpcMappingStrategy();
+        builder.UseTphMappingStrategy();
 
         builder.HasOne<User>(offer => offer.User)
             .WithMany(user => user.Offers)
@@ -42,7 +42,5 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
 
         builder.Property<string?>(nameof(Offer.Description))
             .IsRequired(false);
-
-        builder.Navigation(offer => offer.User).AutoInclude();
     }
 }

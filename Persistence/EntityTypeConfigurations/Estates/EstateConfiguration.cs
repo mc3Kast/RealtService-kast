@@ -18,7 +18,7 @@ public class EstateConfiguration : IEntityTypeConfiguration<Estate>
         builder.HasKey(estate => estate.Id);
         builder.HasIndex(estate => estate.Id).IsUnique();
 
-        builder.UseTphMappingStrategy();
+        builder.UseTpcMappingStrategy();
 
         builder.Property<int>(nameof(Estate.Id))
             .IsRequired()

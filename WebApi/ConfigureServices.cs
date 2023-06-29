@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using RealtService.Application.Common.Mappings;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
+using RealtService.WebApi.Middleware;
 
 namespace RealtService.WebApi;
 
@@ -22,6 +23,7 @@ public static class ConfigureServices
             });
         });
         services.AddControllers();
+        services.AddSingleton<GlobalErrorHandler>();
         return services;
     }
 }

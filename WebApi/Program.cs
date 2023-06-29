@@ -14,6 +14,7 @@ using RealtService.Persistence.UnitOfWork;
 using RealtService.Persistence.UnitOfWork.Repositories;
 using RealtService.WebApi.Middleware;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Reflection;
 using static IdentityServer4.Models.IdentityResources;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -30,6 +31,7 @@ public static class Program
             .Build();
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+        builder.WebHost.ConfigureKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistanceServices(configuration)
             .AddApplicationServices()
