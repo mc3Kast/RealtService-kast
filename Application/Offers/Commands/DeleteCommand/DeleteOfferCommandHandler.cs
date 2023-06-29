@@ -15,8 +15,8 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
         public async Task<Unit> Handle(DeleteOfferCommand request, CancellationToken cancellationToken)
         {
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
-            var entity = await offerRepository.FindAsync(new object[] { request.Id }, cancellationToken);
-            if(entity == null || entity.User != request.UserId)
+            var entity = await offerRepository.GetByIdAsync(request.Id);
+            if(entity == null)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

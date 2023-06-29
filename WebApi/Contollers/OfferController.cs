@@ -38,7 +38,7 @@ namespace RealtService.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreateOfferDto createOfferDto)
+        public async Task<ActionResult<int>> Create([FromBody] CreateOfferDto createOfferDto)
         {
             var command = Mapper.Map<CreateOfferCommand>(createOfferDto);
             var offerId = await Mediator.Send(command);

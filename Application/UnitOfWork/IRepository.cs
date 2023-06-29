@@ -30,6 +30,7 @@ public interface IRepository<TEntity> : IRepository
     Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> selector);
     TEntity? Find(params object[] keyValues);
     Task<TEntity?> FindAsync(params object[] keyValues);
+    Task<TEntity> GetByIdAsync(int id);
     TEntity Insert(TEntity entity);
     void Update(TEntity entity);
     void Delete(TEntity entity);

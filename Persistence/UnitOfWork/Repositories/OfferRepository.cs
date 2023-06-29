@@ -40,6 +40,10 @@ public class OfferRepository : IRepository<Offer>
     {
         return _offers.FindAsync(keyValues).AsTask();
     }
+    public async Task<Offer?> GetByIdAsync(int id)
+    {
+        return await _offers.FindAsync(id);
+    }
 
     public IQueryable<Offer> GetAll()
     {

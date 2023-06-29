@@ -10,7 +10,6 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
     public class DeleteOfferCommand : IRequest<Unit>
     {
-        public User UserId { get; set; }
         public int Id { get; set; }
     }
 }

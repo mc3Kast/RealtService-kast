@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealtService.Application.UnitOfWork;
+using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
 using System.Linq.Expressions;
 
@@ -34,6 +35,10 @@ public class UserRepository : IRepository<User>
     public Task<User?> FindAsync(params object[] keyValues)
     {
         return _users.FindAsync(keyValues).AsTask();
+    }
+    public async Task<User?> GetByIdAsync(int id)
+    {
+        return await _users.FindAsync(id);
     }
 
     public IQueryable<User> GetAll()

@@ -10,7 +10,6 @@ namespace RealtService.Application.Offers.Commands.UpdateOffer
 {
     public class UpdateOfferCommand : IRequest<Unit>
     {
-        public User UserId { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
