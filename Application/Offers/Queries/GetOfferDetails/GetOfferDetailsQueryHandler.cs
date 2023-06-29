@@ -18,7 +18,7 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
             var entity = await offerRepository.GetFirstOrDefaulAsync(offer => offer.Id == request.Id);
 
-            if (entity == null || request.UserId != entity.User)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

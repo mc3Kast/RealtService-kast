@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RealtService.Application.Common.Mappings;
 using RealtService.Application.Offers.Commands.CreateOffer;
+using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.Queries.GetOfferList;
 using RealtService.Application.UnitOfWork;
 using RealtService.Application.Users.Commands;
@@ -37,7 +38,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddAutoMapper(conf => {
             conf.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-            conf.AddProfile(new AssemblyMappingProfile(typeof(RealtServiceDBContext).Assembly));
+            conf.AddProfile(new AssemblyMappingProfile(typeof(OfferDetailsVm).Assembly));
         });
 
         builder.Services.AddDbContext<RealtServiceDBContext>(options => options.UseSqlServer(connectionString));
@@ -60,28 +61,29 @@ public class Program
         });
 
         var app = builder.Build();
-        RealtServiceDBContext context = new(dbOptions);
-        UserRepository userRepository = new(context);
-        OfferRepository offerRepository = new(context);
-        using IUnitOfWork uow = new UnitOfWork(context, offerRepository, userRepository);
-        CreateAgencyCommand cad = new(
-            Name: "123",
-            Email: "vnavsb",
-            HashPassword: "abcd",
-            AgencyUniqueNumber: 1234,
-            RegistrationDate: DateTime.Now,
-            UserStatus: UserStatus.OFFLINE,
-            UserRoles: new List<UserRole>() { UserRole.USER }
-        );
-        CreateOfferCommand coc = new(
-            Title: "222",
-            Description: "asd",
-            Address: "asd"
-        );
-        CreateAgencyCommandHandler cadCommandHandler = new(uow);
-        CreateOfferCommandHandler cocCommandHandler = new(uow);
-        await cadCommandHandler.Handle(cad, new CancellationTokenSource().Token);
-        await cocCommandHandler.Handle(coc, new CancellationTokenSource().Token);
+
+        //RealtServiceDBContext context = new(dbOptions);
+        //UserRepository userRepository = new(context);
+        //OfferRepository offerRepository = new(context);
+        //using IUnitOfWork uow = new UnitOfWork(context, offerRepository, userRepository);
+        //CreateAgencyCommand cad = new(
+        //    Name: "123",
+        //    Email: "vnavsb",
+        //    HashPassword: "abcd",
+        //    AgencyUniqueNumber: 1234,
+        //    RegistrationDate: DateTime.Now,
+        //    UserStatus: UserStatus.OFFLINE,
+        //    UserRoles: new List<UserRole>() { UserRole.USER }
+        //);
+        //CreateOfferCommand coc = new(
+        //    Title: "222",
+        //    Description: "asd",
+        //    Address: "asd"
+        //);
+        //CreateAgencyCommandHandler cadCommandHandler = new(uow);
+        //CreateOfferCommandHandler cocCommandHandler = new(uow);
+        //await cadCommandHandler.Handle(cad, new CancellationTokenSource().Token);
+        //await cocCommandHandler.Handle(coc, new CancellationTokenSource().Token);
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors("AllowAll");
