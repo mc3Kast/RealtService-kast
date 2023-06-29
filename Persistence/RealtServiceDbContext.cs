@@ -36,13 +36,13 @@ public class RealtServiceDBContext : DbContext
 
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
-        Database.EnsureDeleted();
+       // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealtServiceDBContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
     }
 
