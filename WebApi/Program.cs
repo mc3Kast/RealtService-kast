@@ -36,7 +36,7 @@ public static class Program
             .AddWebApiServices();
 
         WebApplication app = builder.Build();
-        app.UseMiddleware<GlobalErrorHandler>();
+        //app.UseMiddleware<GlobalErrorHandler>();
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors("AllowAll");
