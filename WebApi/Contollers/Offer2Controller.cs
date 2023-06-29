@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.Queries.GetOfferList;
@@ -15,10 +14,6 @@ namespace RealtService.WebApi.Contollers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            //var query = new GetOfferListQuery
-            //{
-            //};
-            //var vm = await Mediator.Send(query);
             return Ok(await Mediator.Send(new GetOfferListQuery { }));
         }
 
