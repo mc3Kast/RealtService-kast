@@ -11,13 +11,8 @@ using RealtService.WebApi.Models;
 
 namespace RealtService.WebApi.Controllers
 {
-<<<<<<< HEAD
     [Route("api/offers")]
-    public class OfferContoller : RealtServiceControllerBase
-=======
-    [Route("api/[controller]")]
     public class OfferController : RealtServiceControllerBase
->>>>>>> 7969b40e2b6c6596bb4c9b0f18af4cdb80a5146e
     {
         public OfferController(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
         
