@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using MediatR.Pipeline;
@@ -32,3 +32,4 @@ namespace RealtService.Application.Users.Queries.GetUserList
         }
     }
 }
+*/

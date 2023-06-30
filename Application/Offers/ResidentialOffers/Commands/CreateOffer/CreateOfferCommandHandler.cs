@@ -4,18 +4,19 @@ using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Offers;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Application.Offers.Commands.CreateOffer
+/*namespace RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer
 {
-    public class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, ResidentialOffer>
+    public class CreateOfferCommandHandler : IRequestHandler</*CreateOfferCommand, ResidentialOffer>
     {
         private readonly IUnitOfWork _unitOfWork;
         public CreateOfferCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<ResidentialOffer> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
+
+        public async Task<ResidentialOffer> Handle(/*CreateOfferCommand request, CancellationToken cancellationToken)
         {
-            var offer = new ResidentialOffer
+           var offer = new ResidentialOffer
             {
                 //User = request.User,
                 Name = request.Title,
@@ -25,10 +26,9 @@ namespace RealtService.Application.Offers.Commands.CreateOffer
                 EditDate = null
             };
 
-            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
-            offer = (ResidentialOffer)offerRepository.Insert(offer);
+            offer = (ResidentialOffer)Offers.Insert(offer);
             await _unitOfWork.SaveChangesAsync();
             return offer;
         }
     }
-}
+}*/

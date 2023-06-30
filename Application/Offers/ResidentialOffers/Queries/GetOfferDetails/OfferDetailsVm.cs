@@ -3,7 +3,7 @@ using RealtService.Application.Common.Mappings;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Application.Offers.Queries.GetOfferDetails
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails
 {
     public class OfferDetailsVm : IMapWith<Offer>
     {
@@ -14,7 +14,7 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
         public string Title { get; set; }
         public string Address { get; set; }
         public User User { get; set; }
-        public void Mapping (Profile profile)
+        public void Mapping(Profile profile)
         {
             profile.CreateMap<Offer, OfferDetailsVm>()
                 .ForMember(offerVm => offerVm.Title,

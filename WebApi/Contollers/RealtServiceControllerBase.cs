@@ -7,7 +7,6 @@ using System.Security.Claims;
 namespace RealtService.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
     public abstract class RealtServiceControllerBase : ControllerBase
     {
         protected IMediator Mediator { get; }

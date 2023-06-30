@@ -11,5 +11,8 @@ public class ResidentialLeasing: ResidentialTerm
     public decimal? PricePerDay { get; set; }
     public decimal? PricePerMonth { get; set; }
     public decimal? PricePerYear { get; set; }
-    public ICollection<ResidentialLeasingRequirement> Requirements { get; set; } = new List<ResidentialLeasingRequirement>();   
+    public bool AllowedGirls { get; set; }
+    public bool AllowedBoys { get; set; }
+    public bool AllowedAlcohol { get; set; }
+    public bool AllowedPets { get; set; }
 }

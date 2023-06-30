@@ -4,7 +4,7 @@ using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.Commands.UpdateOffer
+namespace RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer
 {
     public class UpdateOfferCommandHandler : IRequestHandler<UpdateOfferCommand, Unit>
     {
@@ -15,10 +15,10 @@ namespace RealtService.Application.Offers.Commands.UpdateOffer
         }
         public async Task<Unit> Handle(UpdateOfferCommand request, CancellationToken cancellationToken)
         {
-            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
+            IRepository<Offer> offerRepository = _unitOfWork.Offers;
             var entity = await offerRepository.FindAsync(request.Id);
             Console.WriteLine(entity is null);
-            if (entity == null || entity.User != request.UserId) 
+            if (entity == null || entity.User != request.UserId)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

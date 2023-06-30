@@ -5,7 +5,7 @@ using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.Queries.GetOfferDetails
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails
 {
     public class GetOfferDetailsQueryHandler : IRequestHandler<GetOfferDetailsQuery, OfferDetailsVm>
     {
@@ -15,7 +15,7 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
 
         public async Task<OfferDetailsVm> Handle(GetOfferDetailsQuery request, CancellationToken cancellationToken)
         {
-            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
+            IRepository<Offer> offerRepository = _unitOfWork.Offers;
             var entity = await offerRepository.GetFirstOrDefaulAsync(offer => offer.Id == request.Id);
 
             if (entity == null)

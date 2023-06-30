@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.Offers.Queries.GetOfferList
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList
 {
     public class OfferListVm
     {

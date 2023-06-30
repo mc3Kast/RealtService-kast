@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using MediatR.Pipeline;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.Offers.Queries.GetOfferList
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList
 {
     public class GetOfferListQueryHandler : IRequestHandler<GetOfferListQuery, OfferListVm>
     {
@@ -25,8 +25,9 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
             IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
             IQueryable<Offer> offerQuery = await offerRepository
                 .GetAllAsync();
-            
-            return new OfferListVm { Offers =  offerQuery.ToList() };
+
+            return new OfferListVm { Offers = offerQuery.ToList() };
         }
     }
 }
+*/

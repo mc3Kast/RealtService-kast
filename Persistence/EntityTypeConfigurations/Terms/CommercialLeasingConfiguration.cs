@@ -15,9 +15,6 @@ public class CommercialLeasingConfiguration : IEntityTypeConfiguration<Commercia
     {
         builder.HasBaseType<CommercialTerm>();
 
-        builder.HasMany<CommercialLeasingRequirement>(leasing => leasing.Requirements)
-            .WithMany(requirement => requirement.Leasings);
-
         builder.Property<decimal?>(nameof(CommercialLeasing.PricePerMonth))
             .HasColumnType("money")
             .HasDefaultValue(null)
@@ -28,6 +25,15 @@ public class CommercialLeasingConfiguration : IEntityTypeConfiguration<Commercia
             .HasDefaultValue(null)
             .IsRequired(false);
 
-        builder.Navigation(leasing => leasing.Requirements).AutoInclude();
+        builder.Property<bool>(nameof(CommercialLeasing.AllowedManufacturing))
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
+        builder.Property<bool>(nameof(CommercialLeasing.AllowedScheduling))
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
     }
 }

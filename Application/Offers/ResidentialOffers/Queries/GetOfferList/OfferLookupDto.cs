@@ -2,13 +2,13 @@
 using RealtService.Application.Common.Mappings;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.Queries.GetOfferList
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList
 {
     public class OfferLookupDto : IMapWith<Offer>
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public void Mapping (Profile profile)
+        public void Mapping(Profile profile)
         {
             profile.CreateMap<Offer, OfferLookupDto>()
                 .ForMember(offerDto => offerDto.Id,

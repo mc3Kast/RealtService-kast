@@ -1,49 +1,71 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RealtService.Application.UnitOfWork;
+﻿using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
+using RealtService.Domain.Entities.Estates;
+using RealtService.Domain.Entities.Offers;
 using RealtService.Domain.Entities.Users;
-using RealtService.Persistence.UnitOfWork.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealtService.Persistence.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
     private readonly RealtServiceDBContext _dbContext;
-    private readonly Dictionary<Type, IRepository> _repositories = new();
+
     public UnitOfWork(
         RealtServiceDBContext realtServiceDBContext,
-        OfferRepository offerRepository,
-        UserRepository userRepository
+        IRepository<Offer> offers,
+        IRepository<User> users,
+        IRepository<Office> offices,
+        IRepository<Shop> shops,
+        IRepository<Restaurant> restaurants,
+        IRepository<Warehouse> warehouses,
+        IRepository<House> houses,
+        IRepository<Rooms> rooms,
+        IRepository<Flat> flats,
+        IRepository<ResidentialOffer> residentialOffers,
+        IRepository<CommercialOffer> commercialOffers
     ) 
     { 
         _dbContext = realtServiceDBContext;
-        _repositories.Add(typeof(User), userRepository);
-        _repositories.Add(typeof(Offer), offerRepository);
-    }
-    
-    public IRepository<TEntity>? GetRepository<TEntity>() where TEntity : class
-    {
-        _repositories.TryGetValue(typeof(TEntity), out IRepository? repository);
-        return (IRepository<TEntity>?)repository;
+        Offers = offers;
+        Users = users;
+        Offices = offices;
+        Shops = shops;
+        Restaurants = restaurants;
+        Warehouses = warehouses;
+        Rooms = rooms;
+        Houses = houses;
+        Flats = flats;
+        ResidentialOffers = residentialOffers;
+        CommercialOffers = commercialOffers;
     }
 
+    #region repositories
+    public IRepository<Offer> Offers { get; }
+    public IRepository<User> Users { get; }
+    public IRepository<Shop> Shops { get; }
+    public IRepository<Office> Offices { get; }
+    public IRepository<Restaurant> Restaurants { get; }
+    public IRepository<Warehouse> Warehouses { get; }
+    public IRepository<House> Houses { get; }
+    public IRepository<Rooms> Rooms { get; }
+    public IRepository<Flat> Flats { get; }
+    public IRepository<ResidentialOffer> ResidentialOffers { get; }
+    public IRepository<CommercialOffer> CommercialOffers { get; }
+
+    #endregion
     public int SaveChanges()
     {
         return _dbContext.SaveChanges();
     }
 
-    public async Task<int> SaveChangesAsync()
+    public Task<int> SaveChangesAsync()
     {
-        return await _dbContext.SaveChangesAsync();
+        return _dbContext.SaveChangesAsync();
     }
 
     #region IDisposable
     private bool _disposed;
+
     protected virtual void Dispose(bool manual)
     {
         if (_disposed)

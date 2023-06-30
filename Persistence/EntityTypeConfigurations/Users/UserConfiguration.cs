@@ -63,5 +63,6 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
                .IsRequired();
 
         builder.Navigation(user => user.Offers).AutoInclude();
+        builder.Navigation(user => user.Contacts).AutoInclude();
     }
 }

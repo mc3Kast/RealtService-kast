@@ -1,20 +1,17 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RealtService.Application.Offers.Commands.CreateOffer;
-using RealtService.Application.Offers.Commands.DeleteCommand;
-using RealtService.Application.Offers.Commands.UpdateOffer;
-using RealtService.Application.Offers.Queries.GetOfferDetails;
-using RealtService.Application.Offers.Queries.GetOfferList;
-using RealtService.Domain.Entities.Users;
+using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
+using RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails;
+using RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList;
 using RealtService.WebApi.Models;
 
 namespace RealtService.WebApi.Controllers
 {
-    [Route("api/offers")]
-    public class OfferController : RealtServiceControllerBase
+    [Route("api/offers/residential")]
+    public class ResidentialOfferController : RealtServiceControllerBase
     {
-        public OfferController(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
+        public ResidentialOfferController(IMediator mediator, IMapper mapper): base(mediator, mapper) { }
         
         [HttpGet]
         public async Task<ActionResult<OfferListVm>> GetAll()
@@ -66,3 +63,4 @@ namespace RealtService.WebApi.Controllers
     }
 }
 
+*/

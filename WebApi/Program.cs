@@ -1,23 +1,7 @@
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using RealtService.Application;
-using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.Commands.CreateOffer;
-using RealtService.Application.Offers.Queries.GetOfferDetails;
-using RealtService.Application.Offers.Queries.GetOfferList;
-using RealtService.Application.UnitOfWork;
-using RealtService.Application.Users.Commands;
-using RealtService.Domain.Entities.Users;
 using RealtService.Persistence;
-using RealtService.Persistence.UnitOfWork;
-using RealtService.Persistence.UnitOfWork.Repositories;
 using RealtService.WebApi.Middleware;
-using System.ComponentModel.DataAnnotations;
 using System.Net;
-using System.Reflection;
-using static IdentityServer4.Models.IdentityResources;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace RealtService.WebApi;
 
@@ -31,14 +15,14 @@ public static class Program
             .Build();
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.ConfigureKestrel(options => options.Listen(IPAddress.Loopback, 80));
+        builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistanceServices(configuration)
             .AddApplicationServices()
             .AddWebApiServices();
 
         WebApplication app = builder.Build();
-        //app.UseMiddleware<GlobalErrorHandler>();
+        app.UseMiddleware<GlobalErrorHandler>();
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors("AllowAll");

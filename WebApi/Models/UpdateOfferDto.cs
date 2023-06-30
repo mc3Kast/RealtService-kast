@@ -1,7 +1,7 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.Commands.UpdateOffer;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
+using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
 using RealtService.Domain.Entities;
 
 namespace RealtService.WebApi.Models
@@ -26,3 +26,4 @@ namespace RealtService.WebApi.Models
         }
     }
 }
+*/

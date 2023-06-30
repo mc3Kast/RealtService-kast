@@ -30,7 +30,7 @@ public class CreateAgencyCommandHandler : IRequestHandler<CreateAgencyCommand, A
             Status = request.UserStatus,
             Roles = request.UserRoles
         };
-        IRepository<User> userRepository = _unitOfWork.GetRepository<User>()!;
+        IRepository<User> userRepository = _unitOfWork.Users;
         agency = (Agency)userRepository.Insert(agency);
         await _unitOfWork.SaveChangesAsync();
         return agency;

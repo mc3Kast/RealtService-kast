@@ -6,14 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.Offers.Commands.UpdateOffer
+namespace RealtService.Application.Offers.ResidentialOffers.Commands.DeleteCommand
 {
-    public class UpdateOfferCommand : IRequest<Unit>
+    public class DeleteOfferCommand : IRequest<Unit>
     {
         public User UserId { get; set; }
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Address { get; set; }
     }
 }

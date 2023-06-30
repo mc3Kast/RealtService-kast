@@ -12,12 +12,7 @@ using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Application.UnitOfWork;
 
-public interface IRepository
-{ 
-
-}
-
-public interface IRepository<TEntity> : IRepository
+public interface IRepository<TEntity>
     where TEntity : class
 {
     TEntity? GetFirstOrDefault();

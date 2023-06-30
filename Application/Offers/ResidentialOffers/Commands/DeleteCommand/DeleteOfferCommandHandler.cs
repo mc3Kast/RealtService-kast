@@ -3,7 +3,7 @@ using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.Commands.DeleteCommand
+namespace RealtService.Application.Offers.ResidentialOffers.Commands.DeleteCommand
 {
     public class DeleteOfferCommandHandler : IRequestHandler<DeleteOfferCommand, Unit>
     {
@@ -14,9 +14,9 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
         }
         public async Task<Unit> Handle(DeleteOfferCommand request, CancellationToken cancellationToken)
         {
-            IRepository<Offer> offerRepository = _unitOfWork.GetRepository<Offer>()!;
-            var entity = await offerRepository.FindAsync(new object[] { request.Id }, cancellationToken);
-            if(entity == null || entity.User != request.UserId)
+            IRepository<Offer> offerRepository = _unitOfWork.Offers;
+            var entity = await offerRepository.FindAsync(request.Id, cancellationToken);
+            if (entity == null || entity.User != request.UserId)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

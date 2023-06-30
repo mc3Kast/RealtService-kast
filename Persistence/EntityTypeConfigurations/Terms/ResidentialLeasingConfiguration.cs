@@ -9,9 +9,6 @@ public class ResidentialLeasingConfiguration : IEntityTypeConfiguration<Resident
     {
         builder.HasBaseType<ResidentialTerm>();
 
-        builder.HasMany<ResidentialLeasingRequirement>(leasing => leasing.Requirements)
-            .WithMany(requirement => requirement.Leasings);
-
         builder.Property<decimal?>(nameof(ResidentialLeasing.PricePerDay))
             .HasColumnType("money")
             .HasDefaultValue(null)
@@ -27,6 +24,28 @@ public class ResidentialLeasingConfiguration : IEntityTypeConfiguration<Resident
             .HasDefaultValue(null)
             .IsRequired(false);
 
-        builder.Navigation(leasing => leasing.Requirements).AutoInclude();
+        builder.Property<bool>(nameof(ResidentialLeasing.AllowedGirls))
+            .HasColumnName("AllowedGirls")
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
+        builder.Property<bool>(nameof(ResidentialLeasing.AllowedBoys))
+            .HasColumnName("AllowedBoys")
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
+        builder.Property<bool>(nameof(ResidentialLeasing.AllowedPets))
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
+        builder.Property<bool>(nameof(ResidentialLeasing.AllowedAlcohol))
+            .HasColumnType("tinyint")
+            .HasConversion<int>()
+            .IsRequired();
+
+        builder.ToTable(builder => builder.HasCheckConstraint("At_Least_One_Allowed", "[AllowedGirls] = 0 AND [AllowedBoys] = 0"));
     }
 }

@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RealtService.Application.UnitOfWork;
-using RealtService.Persistence.UnitOfWork.Repositories;
+using RealtService.Domain.Entities.Users;
+using RealtService.Persistence.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,7 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddPersistanceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddSingleton<OfferRepository, OfferRepository>();
-        services.AddSingleton<UserRepository, UserRepository>();
+        services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
         services.AddSingleton<IUnitOfWork, UnitOfWork.UnitOfWork>();
         services.AddDbContext<RealtServiceDBContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("DefaultConnection"),
