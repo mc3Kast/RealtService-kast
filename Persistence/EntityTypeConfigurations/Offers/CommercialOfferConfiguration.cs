@@ -20,13 +20,13 @@ public class CommercialOfferConfiguration : IEntityTypeConfiguration<CommercialO
 
         builder.HasOne<CommercialEstate>(offer => offer.Estate)
             .WithOne(estate => estate.Offer)
-            .HasForeignKey<CommercialEstate>("EstateId")
+            .HasForeignKey<CommercialEstate>("OfferId")
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
         builder.HasOne<CommercialTerm>(offer => offer.Term)
             .WithOne(term => term.Offer)
-            .HasForeignKey<CommercialTerm>("TermId")
+            .HasForeignKey<CommercialTerm>("OfferId")
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 

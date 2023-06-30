@@ -20,13 +20,13 @@ public class ResidentialOfferConfiguration : IEntityTypeConfiguration<Residentia
 
         builder.HasOne<ResidentialEstate>(offer => offer.Estate)
             .WithOne(estate => estate.Offer)
-            .HasForeignKey<ResidentialEstate>("EstateId")
+            .HasForeignKey<ResidentialEstate>("OfferId")
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
         builder.HasOne<ResidentialTerm>(offer => offer.Term)
             .WithOne(term => term.Offer)
-            .HasForeignKey<ResidentialTerm>("TermId")
+            .HasForeignKey<ResidentialTerm>("OfferId")
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
