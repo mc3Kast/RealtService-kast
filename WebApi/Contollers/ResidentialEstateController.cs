@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RealtService.Application.Estates.CommercialEstates.Queries.GetEstateList;
 using RealtService.Application.Estates.ResidentialEstates.Queries.GetEstateList;
 using RealtService.WebApi.Controllers;
 

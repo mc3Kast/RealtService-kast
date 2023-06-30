@@ -12,11 +12,11 @@ namespace RealtService.WebApi.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateCommercialOfferDto, CreateCommercialOfferCommand>()
-                .ForMember(noteCommand => noteCommand.Name,
+                .ForMember(offerCommand => offerCommand.Name,
                     opt => opt.MapFrom(offerDto => offerDto.Title))
-                .ForMember(noteCommand => noteCommand.Description,
+                .ForMember(offerCommand => offerCommand.Description,
                     opt => opt.MapFrom(offerDto => offerDto.Description))
-                .ForMember(noteCommand => noteCommand.Address,
+                .ForMember(offerCommand => offerCommand.Address,
                     opt => opt.MapFrom(offerDto => offerDto.Address));
         }
     }
