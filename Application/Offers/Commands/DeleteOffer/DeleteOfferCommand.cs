@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Commands.DeleteCommand
+namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
     public class DeleteOfferCommand : IRequest<Unit>
     {

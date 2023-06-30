@@ -3,7 +3,7 @@ using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Commands.DeleteCommand
+namespace RealtService.Application.Offers.Commands.DeleteCommand
 {
     public class DeleteOfferCommandHandler : IRequestHandler<DeleteOfferCommand, Unit>
     {

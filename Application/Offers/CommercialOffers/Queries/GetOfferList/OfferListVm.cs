@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList
+namespace RealtService.Application.Offers.CommercialOffers.Queries.GetOfferList
 {
-    public class ResiadentialOfferListVm
+    public class CommercialOfferListVm
     {
-        public IList<ResidentialOffer> Offers { get; set; }
+        public IList<CommercialOffer> Offers { get; set; }
     }
 }
