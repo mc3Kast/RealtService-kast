@@ -31,6 +31,10 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
             .HasMaxLength(255)
             .IsRequired();
 
+        builder.Property<string>(nameof(Offer.Address))
+            .HasMaxLength(255)
+            .IsRequired();
+
         builder.Property<int>(nameof(Offer.Id))
             .IsRequired()
             .ValueGeneratedOnAdd()
@@ -39,6 +43,9 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
 
         builder.Property<DateTime>(nameof(Offer.PublicationDate))
             .IsRequired();
+
+        builder.Property<DateTime>(nameof(Offer.EditDate))
+            .IsRequired(false);
 
         builder.Property<string?>(nameof(Offer.Description))
             .IsRequired(false);

@@ -46,6 +46,6 @@ public class ResidentialLeasingConfiguration : IEntityTypeConfiguration<Resident
             .HasConversion<int>()
             .IsRequired();
 
-        builder.ToTable(builder => builder.HasCheckConstraint("At_Least_One_Allowed", "[AllowedGirls] = 0 AND [AllowedBoys] = 0"));
+        builder.ToTable(builder => builder.HasCheckConstraint("CK_At_Least_One_Allowed", "[AllowedGirls] <> 0 AND [AllowedBoys] <> 0"));
     }
 }
