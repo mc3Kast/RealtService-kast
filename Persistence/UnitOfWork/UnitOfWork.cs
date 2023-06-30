@@ -22,6 +22,8 @@ public class UnitOfWork : IUnitOfWork
         IRepository<Rooms> rooms,
         IRepository<Flat> flats,
         IRepository<Estate> estates,
+        IRepository<CommercialEstate> commercialStates,
+        IRepository<ResidentialEstate> residentialStates,
         IRepository<ResidentialOffer> residentialOffers,
         IRepository<CommercialOffer> commercialOffers
     ) 
@@ -37,6 +39,8 @@ public class UnitOfWork : IUnitOfWork
         Houses = houses;
         Flats = flats;
         Estates = estates;
+        CommercialEstates = commercialStates;
+        ResidentialEstates = residentialStates;
         ResidentialOffers = residentialOffers;
         CommercialOffers = commercialOffers;
     }
@@ -52,6 +56,8 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<Rooms> Rooms { get; }
     public IRepository<Flat> Flats { get; }
     public IRepository<Estate> Estates { get; }
+    public IRepository<CommercialEstate> CommercialEstates { get; }
+    public IRepository<ResidentialEstate> ResidentialEstates { get; }
     public IRepository<ResidentialOffer> ResidentialOffers { get; }
     public IRepository<CommercialOffer> CommercialOffers { get; }
 
