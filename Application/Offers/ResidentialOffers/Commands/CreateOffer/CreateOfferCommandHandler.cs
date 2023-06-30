@@ -4,9 +4,9 @@ using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Offers;
 using RealtService.Domain.Entities.Users;
 
-/*namespace RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer
+namespace RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer
 {
-    public class CreateOfferCommandHandler : IRequestHandler</*CreateOfferCommand, ResidentialOffer>
+    public class CreateOfferCommandHandler : IRequestHandler<CreateResidentialOfferCommand, ResidentialOffer>
     {
         private readonly IUnitOfWork _unitOfWork;
         public CreateOfferCommandHandler(IUnitOfWork unitOfWork)
@@ -14,21 +14,23 @@ using RealtService.Domain.Entities.Users;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ResidentialOffer> Handle(/*CreateOfferCommand request, CancellationToken cancellationToken)
+        public async Task<ResidentialOffer> Handle(CreateResidentialOfferCommand request, CancellationToken cancellationToken)
         {
            var offer = new ResidentialOffer
             {
-                //User = request.User,
-                Name = request.Title,
+                User = null,
+                Name = request.Name,
                 Description = request.Description,
                 Address = request.Address,
                 PublicationDate = DateTime.Now,
+                Estate = null,
+                Term = null,
                 EditDate = null
             };
-
-            offer = (ResidentialOffer)Offers.Insert(offer);
+            IRepository<ResidentialOffer> repository = _unitOfWork.ResidentialOffers;
+            offer = repository.Insert(offer);
             await _unitOfWork.SaveChangesAsync();
             return offer;
         }
     }
-}*/
+}

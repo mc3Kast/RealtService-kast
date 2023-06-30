@@ -16,6 +16,7 @@ public class Repository<T> : IRepository<T>
 {
     private readonly DbSet<T> _entities;
 
+
     public Repository(RealtServiceDBContext dbContex) {
         _entities = dbContex.Set<T>();
     }

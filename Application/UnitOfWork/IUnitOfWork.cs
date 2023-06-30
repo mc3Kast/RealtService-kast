@@ -23,6 +23,9 @@ public interface IUnitOfWork : IDisposable
     IRepository<Shop> Shops { get; }
     IRepository<Office> Offices { get; }
     IRepository<Restaurant> Restaurants { get; }
+    IRepository<Estate> Estates { get; }
+    IRepository<CommercialEstate> CommercialEstates { get; }
+    IRepository<ResidentialEstate> ResidentialEstates { get; }
     IRepository<Warehouse> Warehouses { get; }
     IRepository<House> Houses { get; }
     IRepository<Rooms> Rooms { get; }

@@ -5,7 +5,7 @@ using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails
+namespace RealtService.Application.Offers.Queries.GetOfferDetails
 {
     public class GetOfferDetailsQueryHandler : IRequestHandler<GetOfferDetailsQuery, OfferDetailsVm>
     {

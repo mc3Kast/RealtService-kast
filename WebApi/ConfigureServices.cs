@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails;
+using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.WebApi.Middleware;
 
 namespace RealtService.WebApi;

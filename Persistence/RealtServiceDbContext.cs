@@ -34,7 +34,7 @@ public class RealtServiceDBContext : DbContext
     {
         UserStatuses.AttachRange(UserStatus.OFFLINE, UserStatus.ONLINE);
         UserRoles.AttachRange(UserRole.USER, UserRole.ADMIN);
-        Database.EnsureDeleted();
+        //Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 

@@ -21,7 +21,7 @@ public static class ConfigureServices
         services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
         services.AddSingleton<IUnitOfWork, UnitOfWork.UnitOfWork>();
         services.AddDbContext<RealtServiceDBContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("DefaultConnection"),
+                configuration.GetConnectionString("LocalConnection"),
                 optionsBuilder => optionsBuilder.MigrationsAssembly(typeof(RealtServiceDBContext).Assembly.FullName)
             ),
             contextLifetime: ServiceLifetime.Singleton,

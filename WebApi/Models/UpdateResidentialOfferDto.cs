@@ -1,29 +1,26 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
-using RealtService.Domain.Entities;
 
 namespace RealtService.WebApi.Models
 {
-    public class UpdateOfferDto : IMapWith<UpdateOfferCommand>
+    public class UpdateResidentialOfferDto : IMapWith<UpdateOfferCommand>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<UpdateOfferDto, UpdateOfferCommand>()
-                .ForMember(noteCommand => noteCommand.Id,
+            profile.CreateMap<UpdateResidentialOfferDto, UpdateOfferCommand>()
+                .ForMember(offerCommand => offerCommand.Id,
                     opt => opt.MapFrom(offerDto => offerDto.Id))
-                .ForMember(noteCommand => noteCommand.Title,
+                .ForMember(offerCommand => offerCommand.Title,
                     opt => opt.MapFrom(offerDto => offerDto.Title))
-                .ForMember(noteCommand => noteCommand.Description,
+                .ForMember(offerCommand => offerCommand.Description,
                     opt => opt.MapFrom(offerDto => offerDto.Description))
-                .ForMember(noteCommand => noteCommand.Address,
+                .ForMember(offerCommand => offerCommand.Address,
                     opt => opt.MapFrom(offerDto => offerDto.Address));
         }
     }
 }
-*/

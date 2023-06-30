@@ -3,7 +3,7 @@ using RealtService.Application.Common.Mappings;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferDetails
+namespace RealtService.Application.Offers.Queries.GetOfferDetails
 {
     public class OfferDetailsVm : IMapWith<Offer>
     {
