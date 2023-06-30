@@ -15,13 +15,16 @@ public static class Program
             .Build();
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
+        //builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistanceServices(configuration)
             .AddApplicationServices()
-            .AddWebApiServices();
+            .AddWebApiServices()
+            .AddSwaggerGen();
 
         WebApplication app = builder.Build();
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.UseMiddleware<GlobalErrorHandler>();
         app.UseRouting();
         app.UseHttpsRedirection();

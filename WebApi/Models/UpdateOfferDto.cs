@@ -1,14 +1,12 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
-using RealtService.Domain.Entities;
 
 namespace RealtService.WebApi.Models
 {
     public class UpdateOfferDto : IMapWith<UpdateOfferCommand>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
@@ -26,4 +24,3 @@ namespace RealtService.WebApi.Models
         }
     }
 }
-*/

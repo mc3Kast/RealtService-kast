@@ -14,11 +14,12 @@ namespace RealtService.Persistence.UnitOfWork;
 public class Repository<T> : IRepository<T>
     where T : class
 {
+    private readonly RealtServiceDBContext _realtServiceDBContext;
     private readonly DbSet<T> _entities;
 
-    public Repository(DbSet<T> entities)
+    public Repository(RealtServiceDBContext RealtServiceDBContext)
     {
-        _entities = entities;
+        _entities = RealtServiceDBContext.Set<T>();
     }
 
     public void Delete(T entity)
