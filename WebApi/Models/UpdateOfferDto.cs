@@ -13,13 +13,13 @@ namespace RealtService.WebApi.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UpdateOfferDto, UpdateOfferCommand>()
-                .ForMember(noteCommand => noteCommand.Id,
+                .ForMember(offerCommand => offerCommand.Id,
                     opt => opt.MapFrom(offerDto => offerDto.Id))
-                .ForMember(noteCommand => noteCommand.Title,
+                .ForMember(offerCommand => offerCommand.Title,
                     opt => opt.MapFrom(offerDto => offerDto.Title))
-                .ForMember(noteCommand => noteCommand.Description,
+                .ForMember(offerCommand => offerCommand.Description,
                     opt => opt.MapFrom(offerDto => offerDto.Description))
-                .ForMember(noteCommand => noteCommand.Address,
+                .ForMember(offerCommand => offerCommand.Address,
                     opt => opt.MapFrom(offerDto => offerDto.Address));
         }
     }

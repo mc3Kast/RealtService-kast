@@ -16,7 +16,7 @@ namespace RealtService.Application.Offers.ResidentialOffers.Commands.DeleteComma
         {
             IRepository<Offer> offerRepository = _unitOfWork.Offers;
             var entity = await offerRepository.FindAsync(request.Id, cancellationToken);
-            if (entity == null || entity.User != request.UserId)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

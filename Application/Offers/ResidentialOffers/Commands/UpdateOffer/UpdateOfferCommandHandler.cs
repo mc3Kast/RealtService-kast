@@ -18,7 +18,7 @@ namespace RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer
             IRepository<Offer> offerRepository = _unitOfWork.Offers;
             var entity = await offerRepository.FindAsync(request.Id);
             Console.WriteLine(entity is null);
-            if (entity == null || entity.User != request.UserId)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(Offer), request.Id);
             }

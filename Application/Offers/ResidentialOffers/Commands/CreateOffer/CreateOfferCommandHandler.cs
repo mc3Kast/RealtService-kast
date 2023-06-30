@@ -18,11 +18,13 @@ namespace RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer
         {
            var offer = new ResidentialOffer
             {
-                User = request.User,
+                User = null,
                 Name = request.Name,
                 Description = request.Description,
                 Address = request.Address,
                 PublicationDate = DateTime.Now,
+                Estate = null,
+                Term = null,
                 EditDate = null
             };
             IRepository<ResidentialOffer> repository = _unitOfWork.ResidentialOffers;
