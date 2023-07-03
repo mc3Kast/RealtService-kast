@@ -1,68 +1,95 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
-internal class UserConfiguration : IEntityTypeConfiguration<User>
+public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.HasKey(user => user.Id);
-        builder.HasIndex(user => user.Id).IsUnique();
+
+        builder.Property(user => user.Id)
+              .ValueGeneratedOnAdd()
+              .HasColumnType("int")
+              .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
         builder.UseTphMappingStrategy();
 
-        builder.HasMany(user => user.Roles)
-               .WithMany(role => role.Users);
+        builder.HasIndex(user => user.NormalizedUserName)
+            .HasDatabaseName("UserNameIndex")
+            .IsUnique();
 
-        builder.HasOne(user => user.Status)
-               .WithMany()
-               .HasForeignKey("StatusId")
-               .OnDelete(DeleteBehavior.Cascade)
-               .IsRequired();
+        builder.HasIndex(user => user.NormalizedEmail)
+            .HasDatabaseName("EmailIndex")
+            .IsUnique();
+
+        builder.ToTable("Users");
+
+        builder.Property(user => user.ConcurrencyStamp)
+            .IsConcurrencyToken();
+
+        builder.Property(user => user.UserName)
+            .HasMaxLength(256);
+
+        builder.Property(user => user.NormalizedUserName)
+            .HasMaxLength(256);
+
+        builder.Property(user => user.Email)
+            .HasMaxLength(256);
+
+        builder.Property(user => user.NormalizedEmail)
+            .HasMaxLength(256);
+
+        builder.HasMany(user => user.Claims)
+            .WithOne(userClaim => userClaim.User)
+            .HasForeignKey(claim => claim.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+        builder.HasMany(user => user.Logins)
+            .WithOne(login => login.User)
+            .HasForeignKey(login => login.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+        builder.HasMany(user => user.Tokens)
+            .WithOne(token => token.User)
+            .HasForeignKey(token => token.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+        builder.HasMany(user => user.BelongsToRoles)
+            .WithOne(ubtroles => ubtroles.User)
+            .HasForeignKey(ubtroles => ubtroles.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
 
         builder.HasMany(user => user.Contacts)
-               .WithOne(contact => contact.User)
-               .HasForeignKey("UserId")
-               .OnDelete(DeleteBehavior.Cascade)
-               .IsRequired();
-        
-        builder.HasMany<Offer>(user => user.Offers)
-               .WithOne(offer => offer.User)
-               .HasForeignKey("UserId")
-               .OnDelete(DeleteBehavior.NoAction)
-               .IsRequired(false);
+            .WithOne(contact => contact.User)
+            .HasForeignKey(contact => contact.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
 
-        builder.Property<int>(nameof(User.Id))
-               .IsRequired()
-               .ValueGeneratedOnAdd()
-               .HasColumnType("int")
-               .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+        builder.HasMany(user => user.Offers)
+            .WithOne(offer => offer.User)
+            .HasForeignKey(offer => offer.UserId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
 
-        builder.Property<string>(nameof(User.Email))
-               .IsRequired()
-               .HasMaxLength(255);
+        builder.HasOne(user => user.Status)
+            .WithMany(status => status.Users)
+            .HasForeignKey(user => user.StatusId)
+            .OnDelete(DeleteBehavior.NoAction)
+            .IsRequired();
 
-        builder.Property<string>(nameof(User.HashPassword))
-               .IsRequired()
-               .HasMaxLength(255);
-
-        builder.Property<string>(nameof(User.Name))
-               .IsRequired()
-               .HasMaxLength(255);
-
-        builder.Property<DateTime>(nameof(User.RegistrationDate))
-               .IsRequired();
-
-        builder.Navigation(user => user.Offers).AutoInclude();
+        builder.Navigation(user => user.Logins).AutoInclude();
+        builder.Navigation(user => user.Tokens).AutoInclude();
+        builder.Navigation(user => user.Claims).AutoInclude();
         builder.Navigation(user => user.Contacts).AutoInclude();
+        builder.Navigation(user => user.BelongsToRoles).AutoInclude();
+        builder.Navigation(user => user.Status).AutoInclude();
     }
 }

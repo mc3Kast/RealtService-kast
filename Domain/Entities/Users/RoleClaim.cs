@@ -1,4 +1,4 @@
-﻿using RealtService.Domain.Entities.Base;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RealtService.Domain.Entities.Users;
 
-public class UserStatus: NamedEntity
+public class RoleClaim: IdentityRoleClaim<int>
 {
-    public ICollection<User> Users { get; set; }
+    public UserRole Role { get; set; }
 }

@@ -34,6 +34,5 @@ public class CommercialLeasingConfiguration : IEntityTypeConfiguration<Commercia
             .HasColumnType("tinyint")
             .HasConversion<int>()
             .IsRequired();
-
     }
 }

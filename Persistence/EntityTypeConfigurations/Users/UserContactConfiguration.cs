@@ -1,23 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
-internal class UserContactConfiguration : IEntityTypeConfiguration<UserContact>
+public class UserContactConfiguration : IEntityTypeConfiguration<UserContact>
 {
     public void Configure(EntityTypeBuilder<UserContact> builder)
     {
-        builder.Property<int>(nameof(UserContact.Id))
-               .IsRequired()
-               .ValueGeneratedOnAdd()
-               .HasColumnType("tinyint")
-               .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+        builder.HasKey(contact => contact.Id);
 
-        builder.Property<string>(nameof(UserContact.Name))
-               .IsRequired()
-               .HasMaxLength(255);
+        builder.Property(contact => contact.Id)
+              .ValueGeneratedOnAdd()
+              .HasColumnType("int")
+              .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+        builder.Property(contact => contact.Name)
+            .HasMaxLength(256)
+            .IsRequired();
+
+        //Relations defined in UserConfiguration
     }
 }

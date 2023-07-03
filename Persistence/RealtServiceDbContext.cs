@@ -11,13 +11,12 @@ using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Persistence;
 
-public class RealtServiceDBContext : DbContext
+public class RealtServiceDBContext : IdentityDbContext<User, UserRole, int, UserClaim, UserBelongsToRole, UserLogin, RoleClaim, UserToken>
 {
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Agency> Agencies { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
-    public DbSet<UserStatus> UserStatuses { get; set; }
     public DbSet<UserContact> UserContacts { get; set; }
     public DbSet<Offer> Offers { get; set; }
     public DbSet<ResidentialOffer> ResidentialOffers { get; set; }
@@ -32,9 +31,7 @@ public class RealtServiceDBContext : DbContext
 
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
-        UserStatuses.AttachRange(UserStatus.OFFLINE, UserStatus.ONLINE);
-        UserRoles.AttachRange(UserRole.USER, UserRole.ADMIN);
-        //Database.EnsureDeleted();
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 

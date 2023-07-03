@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace RealtService.Domain.Entities.Users;
 
-public class UserContact : NamedEntity
+public class UserContact: NamedEntity
 {
+    public int UserId { get; set; }
     public User User { get; set; }
 }

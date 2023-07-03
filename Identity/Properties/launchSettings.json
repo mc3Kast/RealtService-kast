@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RealtService.Identity": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,20 +1,10 @@
-﻿using RealtService.Domain.Entities.Base;
+﻿using Microsoft.AspNetCore.Identity;
+using RealtService.Domain.Entities.Base;
 
 namespace RealtService.Domain.Entities.Users;
 
-public class UserRole : NamedEntity
+public class UserRole: IdentityRole<int>
 {
-    public static readonly UserRole USER = new UserRole() 
-    { 
-        Id = 1,
-        Name = "USER"
-    };
-
-    public static readonly UserRole ADMIN = new UserRole()
-    {
-        Id = 2,
-        Name = "ADMIN"
-    };
-
-    public ICollection<User> Users { get; set; } = new LinkedList<User>();
+    public ICollection<RoleClaim> Claims { get; set; }
+    public ICollection<UserBelongsToRole> UserBelongsToRoles { get; set; }
 }

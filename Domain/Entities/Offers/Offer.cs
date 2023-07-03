@@ -9,5 +9,7 @@ public abstract class Offer : NamedEntity
     public DateTime PublicationDate { get; set; }
     public string Address { get; set; }
     public DateTime? EditDate { get; set; }
+
+    public int UserId { get; set; }
     public User User { get; set; }
 }

@@ -23,7 +23,7 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
 
         builder.HasOne<User>(offer => offer.User)
             .WithMany(user => user.Offers)
-            .HasForeignKey("UserId")
+            .HasForeignKey(offer => offer.UserId)
             .OnDelete(DeleteBehavior.NoAction)
             .IsRequired(false);
 

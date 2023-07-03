@@ -19,7 +19,7 @@ public class GlobalErrorHandler: IMiddleware
         }
         catch (Exception error)
         {
-            var response = context.Response;
+            HttpResponse response = context.Response;
             response.ContentType = "application/json";
 
             switch (error)
@@ -31,7 +31,7 @@ public class GlobalErrorHandler: IMiddleware
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }
-            var result = JsonSerializer.Serialize(new { message = error.Message });
+            string result = $"Message: {error.Message},\r\n Source: {error.Source},\r\n StackTrace: {error.StackTrace}";
             await response.WriteAsync(result);
         }
     }

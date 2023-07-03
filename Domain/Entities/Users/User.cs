@@ -1,19 +1,34 @@
-﻿using RealtService.Domain.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace RealtService.Domain.Entities.Users;
 
-public abstract class User : NamedEntity
+/// <summary>
+/// public virtual TKey Id { get; set; } = default!;
+/// public virtual string? UserName { get; set; }
+/// public virtual string? NormalizedUserName { get; set; }
+/// public virtual string? Email { get; set; }
+/// public virtual string? NormalizedEmail { get; set; }
+/// public virtual bool EmailConfirmed { get; set; }
+/// public virtual string? PasswordHash { get; set; }
+/// public virtual string? SecurityStamp { get; set; }
+/// public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+/// public virtual string? PhoneNumber { get; set; }
+/// public virtual bool PhoneNumberConfirmed { get; set; }
+/// public virtual bool TwoFactorEnabled { get; set; }
+/// public virtual DateTimeOffset? LockoutEnd { get; set; }
+/// public virtual bool LockoutEnabled { get; set; }
+/// public virtual int AccessFailedCount { get; set; }
+/// </summary>
+
+public abstract class User : IdentityUser<int>
 {
-    public string Email { get; set; }
-    public string HashPassword { get; set; }
-    public DateTime RegistrationDate { get; set; }
-    public ICollection<UserRole> Roles { get; set; } = new HashSet<UserRole>();
+    public ICollection<UserClaim> Claims { get; }
+    public ICollection<UserContact> Contacts { get; }
+    public  ICollection<UserLogin> Logins { get; }
+    public ICollection<UserToken> Tokens { get; }
+    public ICollection<UserBelongsToRole> BelongsToRoles { get; }
+    public ICollection<Offer> Offers { get; }
+
+    public int StatusId { get; set; }
     public UserStatus Status { get; set; }
-    public ICollection<UserContact> Contacts { get; set; } = new List<UserContact>();
-    public ICollection<Offer> Offers { get; set; } = new List<Offer>();
 }

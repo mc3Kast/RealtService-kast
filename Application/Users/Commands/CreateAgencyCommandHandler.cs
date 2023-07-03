@@ -20,19 +20,6 @@ public class CreateAgencyCommandHandler : IRequestHandler<CreateAgencyCommand, A
 
     public async Task<Agency> Handle(CreateAgencyCommand request, CancellationToken cancellationToken)
     {
-        Agency agency = new Agency()
-        {
-            Name = request.Name,
-            Email = request.Email,
-            HashPassword = request.HashPassword,
-            AgencyUniqueNumber = request.AgencyUniqueNumber,
-            RegistrationDate = request.RegistrationDate,
-            Status = request.UserStatus,
-            Roles = request.UserRoles
-        };
-        IRepository<User> userRepository = _unitOfWork.Users;
-        agency = (Agency)userRepository.Insert(agency);
-        await _unitOfWork.SaveChangesAsync();
-        return agency;
+        return null;
     }
 }

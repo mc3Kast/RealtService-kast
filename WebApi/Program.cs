@@ -15,19 +15,21 @@ public static class Program
             .Build();
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        //builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
+        builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
-            .AddPersistanceServices(configuration)
+            .AddPersistenceServices(configuration)
             .AddApplicationServices()
             .AddWebApiServices()
             .AddSwaggerGen();
 
         WebApplication app = builder.Build();
+      //  app.UseMiddleware<GlobalErrorHandler>();
         app.UseSwagger();
         app.UseSwaggerUI();
-        app.UseMiddleware<GlobalErrorHandler>();
         app.UseRouting();
         app.UseHttpsRedirection();
+        app.UseAuthentication();
+        app.UseAuthorization();
         app.UseCors("AllowAll");
         app.MapControllers();
         await app.RunAsync();

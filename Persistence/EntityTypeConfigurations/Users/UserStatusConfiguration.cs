@@ -2,26 +2,27 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RealtService.Domain.Entities.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
-internal class UserStatusConfiguration : IEntityTypeConfiguration<UserStatus>
+public class UserStatusConfiguration : IEntityTypeConfiguration<UserStatus>
 {
     public void Configure(EntityTypeBuilder<UserStatus> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.HasIndex(x => x.Id).IsUnique();
+        builder.HasKey(status => status.Id);
 
-        builder.Property<int>(nameof(UserStatus.Id))
-            .IsRequired()
-            .ValueGeneratedOnAdd()
-            .HasColumnType("tinyint")
-            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+        builder.Property(status => status.Id)
+              .ValueGeneratedOnAdd()
+              .HasColumnType("int")
+              .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-        builder.Property<string>(nameof(UserStatus.Name))
-            .IsRequired()
-            .HasMaxLength(255);
-
-        builder.HasData(UserStatus.ONLINE, UserStatus.OFFLINE);
+        builder.Property(status => status.Name)
+            .HasMaxLength(256)
+            .IsRequired();
     }
 }

@@ -1,4 +1,4 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using MediatR.Pipeline;
@@ -24,7 +24,7 @@ namespace RealtService.Application.Users.Queries.GetUserList
         public GetUserListQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) => (_unitOfWork, _mapper) = (unitOfWork, mapper);
         public async Task<UserListVm> Handle(GetUserListQuery request, CancellationToken cancellationToken)
         {
-            IRepository<User> userRepository = _unitOfWork.GetRepository<User>()!;
+            IRepository<User> userRepository = _unitOfWork.Users;
             IQueryable<User> userQuery = await userRepository
                 .GetAllAsync();
             
@@ -32,4 +32,3 @@ namespace RealtService.Application.Users.Queries.GetUserList
         }
     }
 }
-*/

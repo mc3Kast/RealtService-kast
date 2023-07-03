@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
+using RealtService.Domain.Entities.Estates;
 
 namespace RealtService.Application.Estates.Queries.GetEstateDetails
 {
@@ -15,12 +16,10 @@ namespace RealtService.Application.Estates.Queries.GetEstateDetails
 
         public async Task<EstateDetailsVm> Handle(GetEstateDetailsQuery request, CancellationToken cancellationToken)
         {
-            IRepository<Offer> offerRepository = _unitOfWork.Offers;
-            var entity = await offerRepository.GetFirstOrDefaulAsync(offer => offer.Id == request.Id);
-
-            if (entity == null)
+            Estate? entity = await _unitOfWork.Estates.FindAsync(request.Id);
+            if (entity is null)
             {
-                throw new NotFoundException(nameof(Offer), request.Id);
+                throw new NotFoundException(nameof(Estate), request.Id);
             }
 
             return _mapper.Map<EstateDetailsVm>(entity);

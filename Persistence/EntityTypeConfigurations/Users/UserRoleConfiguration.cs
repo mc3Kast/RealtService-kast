@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -11,23 +10,45 @@ using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Users;
 
-internal class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
+public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
 {
     public void Configure(EntityTypeBuilder<UserRole> builder)
     {
-        builder.HasKey(userRole => userRole.Id);
-        builder.HasIndex(userRole => userRole.Id).IsUnique();
+        builder.HasKey(role => role.Id);
 
-        builder.Property<int>(nameof(UserRole.Id))
-            .IsRequired()
+        builder.Property(role => role.Id)
             .ValueGeneratedOnAdd()
-            .HasColumnType("tinyint")
+            .HasColumnType("int")
             .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-        builder.Property<string>(nameof(UserRole.Name))
-            .IsRequired()
-            .HasMaxLength(255);
+        builder.HasIndex(role => role.NormalizedName)
+            .HasDatabaseName("RoleNameIndex")
+            .IsUnique();
 
-        builder.HasData(UserRole.USER, UserRole.ADMIN);
+        builder.ToTable("Roles");
+
+        builder.Property(role => role.ConcurrencyStamp)
+            .IsConcurrencyToken();
+
+        builder.Property(role => role.Name)
+            .HasMaxLength(256);
+
+        builder.Property(role => role.NormalizedName)
+            .HasMaxLength(256);
+
+        builder.HasMany(role => role.UserBelongsToRoles)
+            .WithOne(userBelongsToRole => userBelongsToRole.Role)
+            .HasForeignKey(userBelongsToRole => userBelongsToRole.RoleId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+        builder.HasMany(role => role.Claims)
+            .WithOne(roleClaim => roleClaim.Role)
+            .HasForeignKey(roleClaim => roleClaim.RoleId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+        builder.Navigation(role => role.Claims).AutoInclude();
+        builder.Navigation(role => role.UserBelongsToRoles).AutoInclude();
     }
 }
