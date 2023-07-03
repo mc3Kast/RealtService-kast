@@ -9,5 +9,5 @@ namespace RealtService.Domain.Entities.Users;
 
 public class UserToken: IdentityUserToken<int>
 {
-    public User User { get; set; }
+    public virtual User User { get; set; }
 }

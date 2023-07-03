@@ -5,6 +5,6 @@ namespace RealtService.Domain.Entities.Users;
 
 public class UserRole: IdentityRole<int>
 {
-    public ICollection<RoleClaim> Claims { get; set; }
-    public ICollection<UserBelongsToRole> UserBelongsToRoles { get; set; }
+    public virtual ICollection<RoleClaim> Claims { get; set; }
+    public virtual ICollection<UserBelongsToRole> UserBelongsToRoles { get; set; }
 }

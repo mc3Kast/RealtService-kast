@@ -22,13 +22,13 @@ namespace RealtService.Domain.Entities.Users;
 
 public abstract class User : IdentityUser<int>
 {
-    public ICollection<UserClaim> Claims { get; }
-    public ICollection<UserContact> Contacts { get; }
-    public  ICollection<UserLogin> Logins { get; }
-    public ICollection<UserToken> Tokens { get; }
-    public ICollection<UserBelongsToRole> BelongsToRoles { get; }
-    public ICollection<Offer> Offers { get; }
+    public virtual ICollection<UserClaim> Claims { get; }
+    public virtual ICollection<UserContact> Contacts { get; }
+    public virtual ICollection<UserLogin> Logins { get; }
+    public virtual ICollection<UserToken> Tokens { get; }
+    public virtual ICollection<UserBelongsToRole> BelongsToRoles { get; }
+    public virtual ICollection<Offer> Offers { get; }
 
-    public int StatusId { get; set; }
-    public UserStatus Status { get; set; }
+    public virtual int StatusId { get; set; }
+    public virtual UserStatus Status { get; set; }
 }

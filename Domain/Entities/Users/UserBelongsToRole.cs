@@ -9,6 +9,6 @@ namespace RealtService.Domain.Entities.Users;
 
 public class UserBelongsToRole: IdentityUserRole<int>
 {
-    public UserRole Role { get; set; }
-    public User User { get; set; }
+    public virtual UserRole Role { get; set; }
+    public virtual User User { get; set; }
 }
