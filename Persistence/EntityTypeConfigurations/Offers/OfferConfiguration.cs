@@ -44,7 +44,7 @@ public class OfferConfiguration : IEntityTypeConfiguration<Offer>
         builder.Property<DateTime>(nameof(Offer.PublicationDate))
             .IsRequired();
 
-        builder.Property<DateTime>(nameof(Offer.EditDate))
+        builder.Property<DateTime?>(nameof(Offer.EditDate))
             .IsRequired(false);
 
         builder.Property<string?>(nameof(Offer.Description))

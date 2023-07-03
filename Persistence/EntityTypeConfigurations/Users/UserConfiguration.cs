@@ -46,37 +46,37 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasMany(user => user.Claims)
             .WithOne(userClaim => userClaim.User)
             .HasForeignKey(claim => claim.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(user => user.Logins)
             .WithOne(login => login.User)
             .HasForeignKey(login => login.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(user => user.Tokens)
             .WithOne(token => token.User)
             .HasForeignKey(token => token.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(user => user.BelongsToRoles)
             .WithOne(ubtroles => ubtroles.User)
             .HasForeignKey(ubtroles => ubtroles.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(user => user.Contacts)
             .WithOne(contact => contact.User)
             .HasForeignKey(contact => contact.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(user => user.Offers)
             .WithOne(offer => offer.User)
             .HasForeignKey(offer => offer.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasOne(user => user.Status)

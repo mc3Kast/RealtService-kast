@@ -39,13 +39,13 @@ public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
         builder.HasMany(role => role.UserBelongsToRoles)
             .WithOne(userBelongsToRole => userBelongsToRole.Role)
             .HasForeignKey(userBelongsToRole => userBelongsToRole.RoleId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.HasMany(role => role.Claims)
             .WithOne(roleClaim => roleClaim.Role)
             .HasForeignKey(roleClaim => roleClaim.RoleId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         builder.Navigation(role => role.Claims).AutoInclude();
