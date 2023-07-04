@@ -12,7 +12,7 @@ namespace RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer
     {
         public User UserId { get; set; }
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
     }

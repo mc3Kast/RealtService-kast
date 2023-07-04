@@ -16,7 +16,7 @@ public static class Program
             .Build();
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
+        //builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistenceServices(configuration)
             .AddIdentityServices(configuration)
