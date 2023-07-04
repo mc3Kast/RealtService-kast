@@ -1,4 +1,5 @@
 using RealtService.Application;
+using RealtService.Identity;
 using RealtService.Persistence;
 using RealtService.WebApi.Middleware;
 using System.Net;
@@ -18,6 +19,7 @@ public static class Program
         builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistenceServices(configuration)
+            .AddIdentityServices(configuration)
             .AddApplicationServices()
             .AddWebApiServices()
             .AddSwaggerGen();

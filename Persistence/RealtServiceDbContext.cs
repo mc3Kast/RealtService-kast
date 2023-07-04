@@ -20,28 +20,20 @@ public class RealtServiceDBContext : IdentityDbContext<User, UserRole, int, User
     public DbSet<ResidentialSale> ResidentialSales { get; set; }
     public DbSet<ResidentialLeasing> ResidentialLeasings { get; set; }
 
-
+    //Other UserRelated DbSets Defined in IdentityDbContext
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Agency> Agencies { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<UserContact> UserContacts { get; set; }
-    public DbSet<UserBelongsToRole> UserBelongsToRole { get; set; }
-    public DbSet<UserToken> UserTokens { get; set; }
     public DbSet<UserStatus> UserStatuses { get; set; }
-    public DbSet<UserLogin> UserLogins { get; set; }
-    public DbSet<UserClaim> UserClaims { get; set; }
-    public DbSet<RoleClaim> RoleClaims { get; set; }
-
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
         Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(RealtServiceDBContext).Assembly);
+        base.OnModelCreating(builder);
+        builder.ApplyConfigurationsFromAssembly(typeof(RealtServiceDBContext).Assembly);
     }
 }
