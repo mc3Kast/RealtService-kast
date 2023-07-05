@@ -5,7 +5,6 @@ using RealtService.Application.Estates.ResidentialEstates.Flats.Commands.CreateF
 using RealtService.Application.Estates.ResidentialEstates.Flats.Commands.UpdateFlat;
 using RealtService.Application.Estates.ResidentialEstates.Flats.Queries.GetEstateList;
 using RealtService.WebApi.Controllers;
-using RealtService.WebApi.Models;
 
 namespace RealtService.WebApi.Contollers
 {
@@ -17,25 +16,18 @@ namespace RealtService.WebApi.Contollers
         [HttpGet]
         public async Task<ActionResult<FlatListVm>> GetAll()
         {
-            var query = new GetFlatListQuery
-            {
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(await Mediator.Send(new GetFlatListQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create([FromBody] CreateFlatDto createOfferDto)
+        public async Task<ActionResult<int>> Create( CreateFlatCommand command)
         {
-            var command = Mapper.Map<CreateFlatCommand>(createOfferDto);
-            var offerId = await Mediator.Send(command);
-            return Ok(offerId);
+            return Ok(await Mediator.Send(command));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateFlatDto updateOfferDto)
+        public async Task<IActionResult> Update( UpdateFlatCommand command)
         {
-            var command = Mapper.Map<UpdateFlatCommand>(updateOfferDto);
             await Mediator.Send(command);
             return NoContent();
         }

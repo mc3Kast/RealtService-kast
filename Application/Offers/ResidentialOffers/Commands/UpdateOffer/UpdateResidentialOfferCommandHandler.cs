@@ -7,14 +7,14 @@ using RealtService.Domain.Entities.Offers;
 
 namespace RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer
 {
-    public class UpdateOfferCommandHandler : IRequestHandler<UpdateOfferCommand, Unit>
+    public class UpdateResidentialOfferCommandHandler : IRequestHandler<UpdateResidentialOfferCommand, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public UpdateOfferCommandHandler(IUnitOfWork unitOfWork)
+        public UpdateResidentialOfferCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<Unit> Handle(UpdateOfferCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateResidentialOfferCommand request, CancellationToken cancellationToken)
         {
             IRepository<ResidentialOffer> offerRepository = _unitOfWork.ResidentialOffers;
             var entity = await offerRepository.FindAsync(request.Id);

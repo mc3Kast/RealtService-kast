@@ -16,32 +16,19 @@ namespace RealtService.WebApi.Contollers
         [HttpGet]
         public async Task<ActionResult<OfferListVm>> GetAll()
         {
-            var query = new GetOfferListQuery
-            {
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(await Mediator.Send(new GetOfferListQuery { }));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<OfferDetailsVm>> Get(int id)
         {
-            var query = new GetOfferDetailsQuery
-            {
-                Id = id
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(await Mediator.Send(new GetOfferDetailsQuery { Id = id}));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteOfferCommand
-            {
-                Id = id
-            };
-            await Mediator.Send(command);
+            await Mediator.Send(new DeleteOfferCommand { Id = id});
             return NoContent();
         }
     }

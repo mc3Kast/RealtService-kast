@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using RealtService.Application.UnitOfWork;
-using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
 
 namespace RealtService.Application.Estates.ResidentialEstates.Queries.GetEstateList

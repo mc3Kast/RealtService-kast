@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
@@ -10,21 +11,16 @@ namespace RealtService.Application.Estates.ResidentialEstates.Flats.Commands.Cre
     public class CreateFlatCommandHandler : IRequestHandler<CreateFlatCommand, Flat>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CreateFlatCommandHandler(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public CreateFlatCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task<Flat> Handle(CreateFlatCommand request, CancellationToken cancellationToken)
         {
-           var flat = new Flat
-           {
-                Square = request.Square,
-                Offer = null,
-                StoreyNumber = request.StoreyNumber,
-                WCNumber = request.WCNumber,
-                RoomNumber = request.RoomNumber
-           };
+           Flat flat = _mapper.Map<Flat>(request);
            IRepository<Flat> repository = _unitOfWork.Flats;
            flat = repository.Insert(flat);
            await _unitOfWork.SaveChangesAsync();

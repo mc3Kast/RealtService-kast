@@ -25,7 +25,7 @@ namespace RealtService.Application.Offers.CommercialOffers.Commands.UpdateOffer
             }
 
             entity.Description = request.Description;
-            entity.Name = request.Title;
+            entity.Name = request.Name;
             entity.Address = request.Address;
             entity.EditDate = DateTime.Now;
 
