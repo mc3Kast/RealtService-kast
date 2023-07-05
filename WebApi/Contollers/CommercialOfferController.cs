@@ -5,7 +5,6 @@ using RealtService.Application.Offers.CommercialOffers.Commands.CreateOffer;
 using RealtService.Application.Offers.CommercialOffers.Commands.UpdateOffer;
 using RealtService.Application.Offers.CommercialOffers.Queries.GetOfferList;
 using RealtService.WebApi.Controllers;
-using RealtService.WebApi.Models;
 
 namespace RealtService.WebApi.Contollers
 {
@@ -17,25 +16,18 @@ namespace RealtService.WebApi.Contollers
         [HttpGet]
         public async Task<ActionResult<CommercialOfferListVm>> GetAll()
         {
-            var query = new GetOfferListQuery
-            {
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(await Mediator.Send(new GetOfferListQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create([FromBody] CreateCommercialOfferDto createOfferDto)
+        public async Task<ActionResult<int>> Create(CreateCommercialOfferCommand command)
         {
-            var command = Mapper.Map<CreateCommercialOfferCommand>(createOfferDto);
-            var offerId = await Mediator.Send(command);
-            return Ok(offerId);
+            return Ok(await Mediator.Send(command));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateCommercialOfferDto updateOfferDto)
+        public async Task<IActionResult> Update(UpdateCommercialOfferCommand command)
         {
-            var command = Mapper.Map<UpdateCommercialOfferCommand>(updateOfferDto);
             await Mediator.Send(command);
             return NoContent();
         }

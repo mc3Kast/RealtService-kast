@@ -14,11 +14,7 @@ namespace RealtService.WebApi.Contollers
         [HttpGet]
         public async Task<ActionResult<ResidentialEstateListVm>> GetAll()
         {
-            var query = new GetResidentialEstateListQuery
-            {
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(await Mediator.Send(new GetResidentialEstateListQuery { }));
         }
     }
 }

@@ -9,10 +9,7 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddWebApiServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(conf => {
-            conf.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-            conf.AddProfile(new AssemblyMappingProfile(typeof(OfferDetailsVm).Assembly));
-        });
+        services.AddAutoMapper(typeof(GeneralProfile));
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll", policy =>
