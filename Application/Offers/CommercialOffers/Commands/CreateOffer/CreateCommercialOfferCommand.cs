@@ -12,8 +12,8 @@ namespace RealtService.Application.Offers.CommercialOffers.Commands.CreateOffer
         public string Description { get; set; }
         public string Address { get; set; }
         public DateTime PublicationDate { get; set; }
-        public User User { get; set; }
-        public CommercialEstate Estate { get; set; }
-        public CommercialTerm Term { get; set; }
+        public int UserId { get; set; }
+        //public CommercialEstate Estate { get; set; }
+        //public CommercialTerm Term { get; set; }
     }
 }

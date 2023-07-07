@@ -8,7 +8,8 @@ namespace RealtService.Application.Estates.ResidentialEstates.Flats.Commands.Cre
 
 public record class CreateFlatCommand : IRequest<Flat>
 {
-    ResidentialOffer Offer { get; set; }
+    //ResidentialOffer Offer { get; set; }
+    public int OfferId { get; set; }
     public float Square { get; set; }
     public int StoreyNumber { get; set; }
     public int RoomNumber { get; set; }

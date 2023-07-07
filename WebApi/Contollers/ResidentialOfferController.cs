@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer;
 using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
@@ -19,12 +20,14 @@ namespace RealtService.WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<int>> Create(CreateResidentialOfferCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Update(UpdateResidentialOfferCommand command)
         {
             await Mediator.Send(command);

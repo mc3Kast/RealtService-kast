@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Offers.Commands.DeleteCommand;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
@@ -26,6 +27,7 @@ namespace RealtService.WebApi.Contollers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await Mediator.Send(new DeleteOfferCommand { Id = id});

@@ -22,7 +22,7 @@ public class SignInCommandHandler : IRequestHandler<SignInCommand, User>
             throw new NotFoundException(objectName: "User", keyName: $"email {request.Email}");
         }
 
-        await _unitOfWork.SignInManager.SignInAsync(user: requestedUser, isPersistent: request.RememberMe);
+        await _unitOfWork.SignInManager.PasswordSignInAsync(user: requestedUser, password: request.Password, isPersistent: request.RememberMe, false);
         return requestedUser;
     }
 }

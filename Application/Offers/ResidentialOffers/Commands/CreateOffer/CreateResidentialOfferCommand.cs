@@ -12,7 +12,7 @@ public record class CreateResidentialOfferCommand : IRequest<ResidentialOffer>
     public string Description { get; set; }
     public string Address { get; set; }
     public DateTime PublicationDate { get; set; }
-    public User User { get; set; }
-    public ResidentialEstate Estate { get; set; }
-    public ResidentialTerm Term { get; set; }
+    public int UserId { get; set; }
+    //public ResidentialEstate Estate { get; set; }
+    //public ResidentialTerm Term { get; set; }
 }

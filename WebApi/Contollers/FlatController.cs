@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Estates.ResidentialEstates.Flats.Commands.CreateFlat;
 using RealtService.Application.Estates.ResidentialEstates.Flats.Commands.UpdateFlat;
@@ -20,12 +21,14 @@ namespace RealtService.WebApi.Contollers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<int>> Create( CreateFlatCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Update( UpdateFlatCommand command)
         {
             await Mediator.Send(command);

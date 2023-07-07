@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Users.Commands;
 using RealtService.WebApi.Controllers;
 
@@ -17,15 +18,14 @@ public class SignInController : RealtServiceControllerBase
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> SignIn(SignInCommand signInCommand)
     {
-        //TODO: Sign in please JWT
-        throw new NotImplementedException();
+        return Ok(await Mediator.Send(signInCommand));
     }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> SignOut(SignOutCommand signOutCommand)
-    {
-        //TODO: Sign out, clear token
-        throw new NotImplementedException();
-    }
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> SignOut(SignOutCommand signOutCommand)
+    //{
+    //    //TODO: Sign out, clear token
+    //    throw new NotImplementedException();
+    //}
 }

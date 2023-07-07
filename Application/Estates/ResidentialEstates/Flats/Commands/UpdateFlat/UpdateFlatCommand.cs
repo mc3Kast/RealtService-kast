@@ -10,7 +10,7 @@ namespace RealtService.Application.Estates.ResidentialEstates.Flats.Commands.Upd
 {
     public class UpdateFlatCommand : IRequest<Unit>
     {
-        public User UserId { get; set; }
+        //public User UserId { get; set; }
         public int Id { get; set; }
         public float Square { get; set; }
         public int StoreyNumber { get; set; }
