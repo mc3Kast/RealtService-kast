@@ -19,7 +19,6 @@ public static class Program
         //builder.WebHost.UseKestrel(options => options.Listen(IPAddress.Loopback, 80));
         builder.Services
             .AddPersistenceServices(configuration)
-            .AddIdentityServices(configuration)
             .AddApplicationServices()
             .AddWebApiServices()
             .AddSwaggerGen();

@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C9C4EDFB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Application.Tests", "Tests\Application.Tests\RealtService.Application.Tests.csproj", "{18E5FB73-9D4D-478D-91BD-EE45C9A07277}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.Identity", "Identity\RealtService.Identity.csproj", "{42CD2193-7667-49C0-AF89-86BA019C713E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtService.TokenProvider", "Identity\RealtService.TokenProvider.csproj", "{42CD2193-7667-49C0-AF89-86BA019C713E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

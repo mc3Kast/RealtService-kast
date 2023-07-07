@@ -8,13 +8,11 @@ namespace RealtService.Application.Users.Commands;
 
 public class SignUpCommandHandler : IRequestHandler<SignUpCommand, User>
 {
-    
-    //TODO: Make IoC with IUnitOfWork
-    private readonly UserManager<User> _userManager;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public SignUpCommandHandler(UserManager<User> userManager)
+    public SignUpCommandHandler(IUnitOfWork unitOfWork)
     {
-        _userManager = userManager;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<User> Handle(SignUpCommand request, CancellationToken cancellationToken)
@@ -35,7 +33,7 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand, User>
         user.UserName = request.UserName;
         user.Email = request.Email;
 
-        IdentityResult result = await _userManager.CreateAsync(user, request.Password);
+        IdentityResult result = await _unitOfWork.UserManager.CreateAsync(user, request.Password);
         if (result.Succeeded)
         {
             return user;

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 using RealtService.Domain.Entities;
@@ -32,6 +33,9 @@ public interface IUnitOfWork : IDisposable
     IRepository<House> Houses { get; }
     IRepository<Rooms> Rooms { get; }
     IRepository<Flat> Flats { get; }
+    UserManager<User> UserManager { get; }
+    RoleManager<UserRole> RoleManager { get; }
+    SignInManager<User> SignInManager { get; }
     int SaveChanges();
     Task<int> SaveChangesAsync();
 }

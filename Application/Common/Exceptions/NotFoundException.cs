@@ -8,5 +8,5 @@ namespace RealtService.Application.Common.Exceptions;
 
 public class NotFoundException : Exception
 { 
-    public NotFoundException(string name, object key) : base($"Entity \"{name}\" ({key} not found.") { }
+    public NotFoundException(string objectName, object keyName) : base($"Entity \"{objectName}\" ({keyName} not found.") { }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RealtService.Application.Common.JWT;
 using RealtService.Application.Common.Mappings;
 
 namespace RealtService.Application

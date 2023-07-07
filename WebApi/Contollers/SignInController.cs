@@ -7,6 +7,8 @@ using RealtService.WebApi.Controllers;
 
 namespace RealtService.WebApi.Contollers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class SignInController : RealtServiceControllerBase
 {
     public SignInController(IMediator mediator, IMapper mapper) : base(mediator, mapper) { }

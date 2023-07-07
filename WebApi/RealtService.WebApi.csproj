@@ -19,7 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\RealtService.Application.csproj" />
     <ProjectReference Include="..\Domain\RealtService.Domain.csproj" />
-    <ProjectReference Include="..\Identity\RealtService.Identity.csproj" />    
+    <ProjectReference Include="..\Identity\RealtService.TokenProvider.csproj" />    
     <ProjectReference Include="..\Persistence\RealtService.Persistence.csproj" />
   </ItemGroup>
 

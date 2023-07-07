@@ -1,4 +1,5 @@
-﻿using RealtService.Application.Common.UnitOfWork;
+﻿using Microsoft.AspNetCore.Identity;
+using RealtService.Application.Common.UnitOfWork;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
 using RealtService.Domain.Entities.Offers;
@@ -25,7 +26,10 @@ public class UnitOfWork : IUnitOfWork
         IRepository<CommercialEstate> commercialStates,
         IRepository<ResidentialEstate> residentialStates,
         IRepository<ResidentialOffer> residentialOffers,
-        IRepository<CommercialOffer> commercialOffers
+        IRepository<CommercialOffer> commercialOffers,
+        UserManager<User> userManager,
+        RoleManager<UserRole> roleManager,
+        SignInManager<User> signInManager
     ) 
     { 
         _dbContext = realtServiceDBContext;
@@ -43,6 +47,9 @@ public class UnitOfWork : IUnitOfWork
         ResidentialEstates = residentialStates;
         ResidentialOffers = residentialOffers;
         CommercialOffers = commercialOffers;
+        UserManager = userManager;
+        RoleManager = roleManager;
+        SignInManager = signInManager;
     }
 
     #region repositories
@@ -60,6 +67,16 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<ResidentialEstate> ResidentialEstates { get; }
     public IRepository<ResidentialOffer> ResidentialOffers { get; }
     public IRepository<CommercialOffer> CommercialOffers { get; }
+
+    #endregion
+
+    #region managers
+
+    public UserManager<User> UserManager { get; }
+
+    public RoleManager<UserRole> RoleManager { get; }
+
+    public SignInManager<User> SignInManager { get; }
 
     #endregion
     public int SaveChanges()
