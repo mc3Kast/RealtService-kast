@@ -1,4 +1,4 @@
-﻿using RealtService.Application.UnitOfWork;
+﻿using RealtService.Application.Common.UnitOfWork;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
 using RealtService.Domain.Entities.Offers;

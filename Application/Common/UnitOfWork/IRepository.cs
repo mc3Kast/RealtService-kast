@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RealtService.Domain.Entities.Users;
 
-namespace RealtService.Application.UnitOfWork;
+namespace RealtService.Application.Common.UnitOfWork;
 
 public interface IRepository<TEntity>
     where TEntity : class

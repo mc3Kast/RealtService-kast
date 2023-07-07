@@ -12,10 +12,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealtService.Application.UnitOfWork;
+namespace RealtService.Application.Common.UnitOfWork;
 
 public interface IUnitOfWork : IDisposable
 {
+    //TODO: Make IoC of XXXManager classes
+    //TODO: One day transactions may become necessary
     IRepository<Offer> Offers { get; }
     IRepository<ResidentialOffer> ResidentialOffers { get; }
     IRepository<CommercialOffer> CommercialOffers { get; }

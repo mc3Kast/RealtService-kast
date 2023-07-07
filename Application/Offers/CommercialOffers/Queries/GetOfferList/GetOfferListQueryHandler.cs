@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using RealtService.Application.UnitOfWork;
+using RealtService.Application.Common.UnitOfWork;
 using RealtService.Domain.Entities.Offers;
 
 namespace RealtService.Application.Offers.CommercialOffers.Queries.GetOfferList

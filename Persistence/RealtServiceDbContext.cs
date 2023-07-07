@@ -24,11 +24,9 @@ public class RealtServiceDBContext : IdentityDbContext<User, UserRole, int, User
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Agency> Agencies { get; set; }
     public DbSet<UserContact> UserContacts { get; set; }
-    public DbSet<UserStatus> UserStatuses { get; set; }
     public RealtServiceDBContext(DbContextOptions options) : base(options)
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();
+
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

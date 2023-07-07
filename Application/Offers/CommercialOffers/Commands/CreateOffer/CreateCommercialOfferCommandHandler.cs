@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
+using RealtService.Application.Common.UnitOfWork;
 using RealtService.Application.Offers.ResidentialOffers.Commands.CreateOffer;
-using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities.Offers;
 
 namespace RealtService.Application.Offers.CommercialOffers.Commands.CreateOffer

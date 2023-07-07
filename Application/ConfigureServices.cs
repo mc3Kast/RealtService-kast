@@ -1,9 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using MediatR;
-using System.Net.NetworkInformation;
-using RealtService.Application.Users.Commands;
-using RealtService.Application.UnitOfWork;
+using RealtService.Application.Common.Mappings;
 
 namespace RealtService.Application
 {
@@ -11,7 +7,7 @@ namespace RealtService.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateAgencyCommand>());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GeneralProfile>());
             return services;
         }
     }

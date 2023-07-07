@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RealtService.Application.UnitOfWork;
+using RealtService.Application.Common.UnitOfWork;
 using RealtService.Domain.Entities.Users;
 using RealtService.Persistence.UnitOfWork;
 
@@ -15,12 +15,13 @@ public static class ConfigureServices
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
         services.AddDbContext<RealtServiceDBContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("LocalConnection"),
+                configuration.GetConnectionString("DefaultConnection"),
                 optionsBuilder => optionsBuilder.MigrationsAssembly(typeof(RealtServiceDBContext).Assembly.FullName)
             ),
             contextLifetime: ServiceLifetime.Scoped,
             optionsLifetime: ServiceLifetime.Scoped);
 
+        services.AddScoped<RealtServiceDbContextInitializer>();
 
         services.AddIdentityCore<User>(options =>
         {

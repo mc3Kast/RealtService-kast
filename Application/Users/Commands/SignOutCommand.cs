@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 
 namespace RealtService.Application.Users.Commands;
 
-public record class GrantUserAdminCommand(int UserId): IRequest<bool>;
+public class SignOutCommand: IRequest
+{
+}

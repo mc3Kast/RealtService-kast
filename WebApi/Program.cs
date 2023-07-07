@@ -34,6 +34,13 @@ public static class Program
         app.UseAuthorization();
         app.UseCors("AllowAll");
         app.MapControllers();
+
+        //TODO: Think please how we can implement it properly
+        using IServiceScope scope = app.Services.CreateScope();
+        IServiceProvider services = scope.ServiceProvider;
+        RealtServiceDbContextInitializer initialiser = services.GetRequiredService<RealtServiceDbContextInitializer>();
+        await initialiser.InitializeDatabaseAsync(configuration);
+
         await app.RunAsync();
     }
 }

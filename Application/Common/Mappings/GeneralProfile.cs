@@ -6,7 +6,6 @@ using RealtService.Application.Estates.ResidentialEstates.Flats.Commands.CreateF
 using RealtService.Application.Estates.ResidentialEstates.Flats.Queries.GetEstateList;
 using RealtService.Application.Estates.ResidentialEstates.Queries.GetEstateList;
 using RealtService.Application.Offers.CommercialOffers.Commands.CreateOffer;
-using RealtService.Application.Offers.CommercialOffers.Commands.UpdateOffer;
 using RealtService.Application.Offers.CommercialOffers.Queries.GetOfferList;
 using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.Application.Offers.Queries.GetOfferList;

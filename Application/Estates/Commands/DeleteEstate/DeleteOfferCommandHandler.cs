@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RealtService.Application.Common.Exceptions;
+using RealtService.Application.Common.UnitOfWork;
 using RealtService.Application.Estates.Commands.DeleteCommand;
-using RealtService.Application.UnitOfWork;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
 

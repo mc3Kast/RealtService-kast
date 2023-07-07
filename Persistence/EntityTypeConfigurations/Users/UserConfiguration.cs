@@ -80,17 +80,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
-        builder.HasOne(user => user.Status)
-            .WithMany(status => status.Users)
-            .HasForeignKey(user => user.StatusId)
-            .OnDelete(DeleteBehavior.NoAction)
-            .IsRequired();
-
         builder.Navigation(user => user.Logins).AutoInclude();
         builder.Navigation(user => user.Tokens).AutoInclude();
         builder.Navigation(user => user.Claims).AutoInclude();
         builder.Navigation(user => user.Contacts).AutoInclude();
         builder.Navigation(user => user.BelongsToRoles).AutoInclude();
-        builder.Navigation(user => user.Status).AutoInclude();
     }
 }

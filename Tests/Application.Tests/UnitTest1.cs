@@ -6,6 +6,8 @@ namespace Application.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            //TODO: EGOOR, NIKITA, CAN YOU DO ANYTHING?!!
+            throw new NotImplementedException();
         }
     }
 }

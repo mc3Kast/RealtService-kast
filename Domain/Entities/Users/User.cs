@@ -28,7 +28,4 @@ public abstract class User : IdentityUser<int>
     public virtual ICollection<UserToken> Tokens { get; }
     public virtual ICollection<UserBelongsToRole> BelongsToRoles { get; }
     public virtual ICollection<Offer> Offers { get; }
-
-    public virtual int StatusId { get; set; }
-    public virtual UserStatus Status { get; set; }
 }
